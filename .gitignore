@@ -3,7 +3,7 @@
 *.rapt
 *.xml
 *.properties
-
+*.MF
 /IngWeb-ejb/build/
 /IngWeb-war/build/
 /build/
