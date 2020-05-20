@@ -1,7 +1,7 @@
 *.class
 *.res
 *.rapt
-
+*.xml
 *.properties
 
 /IngWeb-ejb/build/
@@ -9,3 +9,6 @@
 /build/
 /IngWeb-war/dist/
 /IngWeb-ejb/dist/
+*.dpf
+
+dist/gfdeploy/IngWeb/IngWeb-war_war/
