@@ -1,6 +1,11 @@
 *.class
 *.res
 *.rapt
-*.MF
+
 *.properties
 
+/IngWeb-ejb/build/
+/IngWeb-war/build/
+/build/
+/IngWeb-war/dist/
+/IngWeb-ejb/dist/
