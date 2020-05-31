@@ -59,11 +59,11 @@ public class TbHistorial implements Serializable {
     @Size(max = 150)
     @Column(name = "dedicacion")
     private String dedicacion;
-    @OneToMany(mappedBy = "idHistorial")
-    private List<TbAsignaturasimpartidas> tbAsignaturasimpartidasList;
     @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
     @ManyToOne
     private TbInvestigador idInvestigador;
+    @OneToMany(mappedBy = "idHistorial")
+    private List<TbAsignaturasimpartidas> tbAsignaturasimpartidasList;
 
     public TbHistorial() {
     }
@@ -112,6 +112,14 @@ public class TbHistorial implements Serializable {
         this.dedicacion = dedicacion;
     }
 
+    public TbInvestigador getIdInvestigador() {
+        return idInvestigador;
+    }
+
+    public void setIdInvestigador(TbInvestigador idInvestigador) {
+        this.idInvestigador = idInvestigador;
+    }
+
     @XmlTransient
     public List<TbAsignaturasimpartidas> getTbAsignaturasimpartidasList() {
         return tbAsignaturasimpartidasList;
@@ -119,14 +127,6 @@ public class TbHistorial implements Serializable {
 
     public void setTbAsignaturasimpartidasList(List<TbAsignaturasimpartidas> tbAsignaturasimpartidasList) {
         this.tbAsignaturasimpartidasList = tbAsignaturasimpartidasList;
-    }
-
-    public TbInvestigador getIdInvestigador() {
-        return idInvestigador;
-    }
-
-    public void setIdInvestigador(TbInvestigador idInvestigador) {
-        this.idInvestigador = idInvestigador;
     }
 
     @Override

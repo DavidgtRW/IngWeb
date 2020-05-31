@@ -63,15 +63,13 @@ public class TbInstitucion implements Serializable {
     @Size(max = 150)
     @Column(name = "tipo")
     private String tipo;
-    @OneToMany(mappedBy = "idInstitucion")
-    private List<TbDireccion> tbDireccionList;
-    @OneToMany(mappedBy = "idInstitucion")
-    private List<TbInstitucionprograma> tbInstitucionprogramaList;
     @JoinColumn(name = "id_direccion", referencedColumnName = "id_direccion")
     @ManyToOne
     private TbDireccion idDireccion;
     @OneToMany(mappedBy = "idInstitucion")
     private List<TbTipoprograma> tbTipoprogramaList;
+    @OneToMany(mappedBy = "idInstitucion")
+    private List<TbInstitucionprograma> tbInstitucionprogramaList;
 
     public TbInstitucion() {
     }
@@ -134,24 +132,6 @@ public class TbInstitucion implements Serializable {
         this.tipo = tipo;
     }
 
-    @XmlTransient
-    public List<TbDireccion> getTbDireccionList() {
-        return tbDireccionList;
-    }
-
-    public void setTbDireccionList(List<TbDireccion> tbDireccionList) {
-        this.tbDireccionList = tbDireccionList;
-    }
-
-    @XmlTransient
-    public List<TbInstitucionprograma> getTbInstitucionprogramaList() {
-        return tbInstitucionprogramaList;
-    }
-
-    public void setTbInstitucionprogramaList(List<TbInstitucionprograma> tbInstitucionprogramaList) {
-        this.tbInstitucionprogramaList = tbInstitucionprogramaList;
-    }
-
     public TbDireccion getIdDireccion() {
         return idDireccion;
     }
@@ -167,6 +147,15 @@ public class TbInstitucion implements Serializable {
 
     public void setTbTipoprogramaList(List<TbTipoprograma> tbTipoprogramaList) {
         this.tbTipoprogramaList = tbTipoprogramaList;
+    }
+
+    @XmlTransient
+    public List<TbInstitucionprograma> getTbInstitucionprogramaList() {
+        return tbInstitucionprogramaList;
+    }
+
+    public void setTbInstitucionprogramaList(List<TbInstitucionprograma> tbInstitucionprogramaList) {
+        this.tbInstitucionprogramaList = tbInstitucionprogramaList;
     }
 
     @Override

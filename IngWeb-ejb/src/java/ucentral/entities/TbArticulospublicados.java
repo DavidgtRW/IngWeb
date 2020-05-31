@@ -85,11 +85,14 @@ public class TbArticulospublicados implements Serializable {
     @Size(max = 100)
     @Column(name = "titulo_maximo")
     private String tituloMaximo;
+    @OneToMany(mappedBy = "idArticulospub")
+    private List<TbAutoresArtpubl> tbAutoresArtpublList;
+    @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
+    @ManyToOne
+    private TbInvestigador idInvestigador;
     @JoinColumn(name = "id_lineainvestigacion", referencedColumnName = "id_lineainvestigacion")
     @ManyToOne
     private TbLineainvestigacion idLineainvestigacion;
-    @OneToMany(mappedBy = "idArticulospublicados")
-    private List<TbLineainvestigacion> tbLineainvestigacionList;
 
     public TbArticulospublicados() {
     }
@@ -194,21 +197,29 @@ public class TbArticulospublicados implements Serializable {
         this.tituloMaximo = tituloMaximo;
     }
 
+    @XmlTransient
+    public List<TbAutoresArtpubl> getTbAutoresArtpublList() {
+        return tbAutoresArtpublList;
+    }
+
+    public void setTbAutoresArtpublList(List<TbAutoresArtpubl> tbAutoresArtpublList) {
+        this.tbAutoresArtpublList = tbAutoresArtpublList;
+    }
+
+    public TbInvestigador getIdInvestigador() {
+        return idInvestigador;
+    }
+
+    public void setIdInvestigador(TbInvestigador idInvestigador) {
+        this.idInvestigador = idInvestigador;
+    }
+
     public TbLineainvestigacion getIdLineainvestigacion() {
         return idLineainvestigacion;
     }
 
     public void setIdLineainvestigacion(TbLineainvestigacion idLineainvestigacion) {
         this.idLineainvestigacion = idLineainvestigacion;
-    }
-
-    @XmlTransient
-    public List<TbLineainvestigacion> getTbLineainvestigacionList() {
-        return tbLineainvestigacionList;
-    }
-
-    public void setTbLineainvestigacionList(List<TbLineainvestigacion> tbLineainvestigacionList) {
-        this.tbLineainvestigacionList = tbLineainvestigacionList;
     }
 
     @Override

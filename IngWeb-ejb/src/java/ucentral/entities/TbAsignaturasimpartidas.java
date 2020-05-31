@@ -49,9 +49,6 @@ public class TbAsignaturasimpartidas implements Serializable {
     @JoinColumn(name = "id_historial", referencedColumnName = "id_historial")
     @ManyToOne
     private TbHistorial idHistorial;
-    @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
-    @ManyToOne
-    private TbPrograma idPrograma;
 
     public TbAsignaturasimpartidas() {
     }
@@ -95,14 +92,6 @@ public class TbAsignaturasimpartidas implements Serializable {
 
     public void setIdHistorial(TbHistorial idHistorial) {
         this.idHistorial = idHistorial;
-    }
-
-    public TbPrograma getIdPrograma() {
-        return idPrograma;
-    }
-
-    public void setIdPrograma(TbPrograma idPrograma) {
-        this.idPrograma = idPrograma;
     }
 
     @Override

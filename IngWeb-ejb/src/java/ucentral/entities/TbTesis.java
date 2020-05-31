@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -52,9 +50,6 @@ public class TbTesis implements Serializable {
     @Size(max = 200)
     @Column(name = "descripcion")
     private String descripcion;
-    @JoinColumn(name = "id_investigadorprograma", referencedColumnName = "id_inv_prog")
-    @ManyToOne
-    private TbInvestigadorPrograma idInvestigadorprograma;
     @OneToMany(mappedBy = "idTesis")
     private List<TbInvestigadorPrograma> tbInvestigadorProgramaList;
     @OneToMany(mappedBy = "idTesis")
@@ -97,14 +92,6 @@ public class TbTesis implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public TbInvestigadorPrograma getIdInvestigadorprograma() {
-        return idInvestigadorprograma;
-    }
-
-    public void setIdInvestigadorprograma(TbInvestigadorPrograma idInvestigadorprograma) {
-        this.idInvestigadorprograma = idInvestigadorprograma;
     }
 
     @XmlTransient

@@ -64,7 +64,10 @@ public class TbProduccionTA implements Serializable {
     @Column(name = "tipo_produccion")
     private String tipoProduccion;
     @OneToMany(mappedBy = "idProduccionta")
-    private List<TbLineainvestigacion> tbLineainvestigacionList;
+    private List<TbAutoresProdta> tbAutoresProdtaList;
+    @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
+    @ManyToOne
+    private TbInvestigador idInvestigador;
     @JoinColumn(name = "id_lineainvestigacion", referencedColumnName = "id_lineainvestigacion")
     @ManyToOne
     private TbLineainvestigacion idLineainvestigacion;
@@ -131,12 +134,20 @@ public class TbProduccionTA implements Serializable {
     }
 
     @XmlTransient
-    public List<TbLineainvestigacion> getTbLineainvestigacionList() {
-        return tbLineainvestigacionList;
+    public List<TbAutoresProdta> getTbAutoresProdtaList() {
+        return tbAutoresProdtaList;
     }
 
-    public void setTbLineainvestigacionList(List<TbLineainvestigacion> tbLineainvestigacionList) {
-        this.tbLineainvestigacionList = tbLineainvestigacionList;
+    public void setTbAutoresProdtaList(List<TbAutoresProdta> tbAutoresProdtaList) {
+        this.tbAutoresProdtaList = tbAutoresProdtaList;
+    }
+
+    public TbInvestigador getIdInvestigador() {
+        return idInvestigador;
+    }
+
+    public void setIdInvestigador(TbInvestigador idInvestigador) {
+        this.idInvestigador = idInvestigador;
     }
 
     public TbLineainvestigacion getIdLineainvestigacion() {

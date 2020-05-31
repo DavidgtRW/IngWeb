@@ -105,11 +105,17 @@ public class TbInvestigador implements Serializable {
     @Column(name = "hoja_vida")
     private byte[] hojaVida;
     @OneToMany(mappedBy = "idInvestigador")
+    private List<TbHistorial> tbHistorialList;
+    @OneToMany(mappedBy = "idInvestigador")
+    private List<TbActividadesform> tbActividadesformList;
+    @OneToMany(mappedBy = "idInvestigador")
+    private List<TbProduccionbibliografica> tbProduccionbibliograficaList;
+    @OneToMany(mappedBy = "idInvestigador")
+    private List<TbArticulospublicados> tbArticulospublicadosList;
+    @OneToMany(mappedBy = "idInvestigador")
     private List<TbActividadesevaluador> tbActividadesevaluadorList;
     @OneToMany(mappedBy = "idInvestigador")
     private List<TbInvestigadorPrograma> tbInvestigadorProgramaList;
-    @OneToMany(mappedBy = "idInvestigador")
-    private List<TbHistorial> tbHistorialList;
     @JoinColumn(name = "id_direccion", referencedColumnName = "id_direccion")
     @ManyToOne
     private TbDireccion idDireccion;
@@ -119,12 +125,11 @@ public class TbInvestigador implements Serializable {
     @JoinColumn(name = "id_nacionalidad", referencedColumnName = "id_nacionalidad")
     @ManyToOne
     private TbNacionalidad idNacionalidad;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private TbUsuario idUsuario;
     @OneToMany(mappedBy = "idInvestigador")
-    private List<TbDireccion> tbDireccionList;
-    @OneToMany(mappedBy = "idInvestigador")
-    private List<TbLibretamilitar> tbLibretamilitarList;
-    @OneToMany(mappedBy = "idInvestigador")
-    private List<TbActividadesform> tbActividadesformList;
+    private List<TbProduccionTA> tbProduccionTAList;
 
     public TbInvestigador() {
     }
@@ -262,6 +267,42 @@ public class TbInvestigador implements Serializable {
     }
 
     @XmlTransient
+    public List<TbHistorial> getTbHistorialList() {
+        return tbHistorialList;
+    }
+
+    public void setTbHistorialList(List<TbHistorial> tbHistorialList) {
+        this.tbHistorialList = tbHistorialList;
+    }
+
+    @XmlTransient
+    public List<TbActividadesform> getTbActividadesformList() {
+        return tbActividadesformList;
+    }
+
+    public void setTbActividadesformList(List<TbActividadesform> tbActividadesformList) {
+        this.tbActividadesformList = tbActividadesformList;
+    }
+
+    @XmlTransient
+    public List<TbProduccionbibliografica> getTbProduccionbibliograficaList() {
+        return tbProduccionbibliograficaList;
+    }
+
+    public void setTbProduccionbibliograficaList(List<TbProduccionbibliografica> tbProduccionbibliograficaList) {
+        this.tbProduccionbibliograficaList = tbProduccionbibliograficaList;
+    }
+
+    @XmlTransient
+    public List<TbArticulospublicados> getTbArticulospublicadosList() {
+        return tbArticulospublicadosList;
+    }
+
+    public void setTbArticulospublicadosList(List<TbArticulospublicados> tbArticulospublicadosList) {
+        this.tbArticulospublicadosList = tbArticulospublicadosList;
+    }
+
+    @XmlTransient
     public List<TbActividadesevaluador> getTbActividadesevaluadorList() {
         return tbActividadesevaluadorList;
     }
@@ -277,15 +318,6 @@ public class TbInvestigador implements Serializable {
 
     public void setTbInvestigadorProgramaList(List<TbInvestigadorPrograma> tbInvestigadorProgramaList) {
         this.tbInvestigadorProgramaList = tbInvestigadorProgramaList;
-    }
-
-    @XmlTransient
-    public List<TbHistorial> getTbHistorialList() {
-        return tbHistorialList;
-    }
-
-    public void setTbHistorialList(List<TbHistorial> tbHistorialList) {
-        this.tbHistorialList = tbHistorialList;
     }
 
     public TbDireccion getIdDireccion() {
@@ -312,31 +344,21 @@ public class TbInvestigador implements Serializable {
         this.idNacionalidad = idNacionalidad;
     }
 
-    @XmlTransient
-    public List<TbDireccion> getTbDireccionList() {
-        return tbDireccionList;
+    public TbUsuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setTbDireccionList(List<TbDireccion> tbDireccionList) {
-        this.tbDireccionList = tbDireccionList;
-    }
-
-    @XmlTransient
-    public List<TbLibretamilitar> getTbLibretamilitarList() {
-        return tbLibretamilitarList;
-    }
-
-    public void setTbLibretamilitarList(List<TbLibretamilitar> tbLibretamilitarList) {
-        this.tbLibretamilitarList = tbLibretamilitarList;
+    public void setIdUsuario(TbUsuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @XmlTransient
-    public List<TbActividadesform> getTbActividadesformList() {
-        return tbActividadesformList;
+    public List<TbProduccionTA> getTbProduccionTAList() {
+        return tbProduccionTAList;
     }
 
-    public void setTbActividadesformList(List<TbActividadesform> tbActividadesformList) {
-        this.tbActividadesformList = tbActividadesformList;
+    public void setTbProduccionTAList(List<TbProduccionTA> tbProduccionTAList) {
+        this.tbProduccionTAList = tbProduccionTAList;
     }
 
     @Override

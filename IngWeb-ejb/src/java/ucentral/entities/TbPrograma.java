@@ -43,7 +43,7 @@ public class TbPrograma implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @OneToMany(mappedBy = "idPrograma")
-    private List<TbAsignaturasimpartidas> tbAsignaturasimpartidasList;
+    private List<TbAsignaturasPrograma> tbAsignaturasProgramaList;
     @OneToMany(mappedBy = "idPrograma")
     private List<TbInstitucionprograma> tbInstitucionprogramaList;
 
@@ -71,12 +71,12 @@ public class TbPrograma implements Serializable {
     }
 
     @XmlTransient
-    public List<TbAsignaturasimpartidas> getTbAsignaturasimpartidasList() {
-        return tbAsignaturasimpartidasList;
+    public List<TbAsignaturasPrograma> getTbAsignaturasProgramaList() {
+        return tbAsignaturasProgramaList;
     }
 
-    public void setTbAsignaturasimpartidasList(List<TbAsignaturasimpartidas> tbAsignaturasimpartidasList) {
-        this.tbAsignaturasimpartidasList = tbAsignaturasimpartidasList;
+    public void setTbAsignaturasProgramaList(List<TbAsignaturasPrograma> tbAsignaturasProgramaList) {
+        this.tbAsignaturasProgramaList = tbAsignaturasProgramaList;
     }
 
     @XmlTransient

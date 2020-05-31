@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -49,15 +47,9 @@ public class TbDireccion implements Serializable {
     @Column(name = "calle")
     private String calle;
     @OneToMany(mappedBy = "idDireccion")
-    private List<TbInvestigador> tbInvestigadorList;
-    @JoinColumn(name = "id_institucion", referencedColumnName = "id_institucion")
-    @ManyToOne
-    private TbInstitucion idInstitucion;
-    @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
-    @ManyToOne
-    private TbInvestigador idInvestigador;
-    @OneToMany(mappedBy = "idDireccion")
     private List<TbInstitucion> tbInstitucionList;
+    @OneToMany(mappedBy = "idDireccion")
+    private List<TbInvestigador> tbInvestigadorList;
 
     public TbDireccion() {
     }
@@ -91,37 +83,21 @@ public class TbDireccion implements Serializable {
     }
 
     @XmlTransient
-    public List<TbInvestigador> getTbInvestigadorList() {
-        return tbInvestigadorList;
-    }
-
-    public void setTbInvestigadorList(List<TbInvestigador> tbInvestigadorList) {
-        this.tbInvestigadorList = tbInvestigadorList;
-    }
-
-    public TbInstitucion getIdInstitucion() {
-        return idInstitucion;
-    }
-
-    public void setIdInstitucion(TbInstitucion idInstitucion) {
-        this.idInstitucion = idInstitucion;
-    }
-
-    public TbInvestigador getIdInvestigador() {
-        return idInvestigador;
-    }
-
-    public void setIdInvestigador(TbInvestigador idInvestigador) {
-        this.idInvestigador = idInvestigador;
-    }
-
-    @XmlTransient
     public List<TbInstitucion> getTbInstitucionList() {
         return tbInstitucionList;
     }
 
     public void setTbInstitucionList(List<TbInstitucion> tbInstitucionList) {
         this.tbInstitucionList = tbInstitucionList;
+    }
+
+    @XmlTransient
+    public List<TbInvestigador> getTbInvestigadorList() {
+        return tbInvestigadorList;
+    }
+
+    public void setTbInvestigadorList(List<TbInvestigador> tbInvestigadorList) {
+        this.tbInvestigadorList = tbInvestigadorList;
     }
 
     @Override

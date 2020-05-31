@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -57,28 +55,13 @@ public class TbLineainvestigacion implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(mappedBy = "idLineainvestigacion")
+    private List<TbActividadesform> tbActividadesformList;
+    @OneToMany(mappedBy = "idLineainvestigacion")
     private List<TbProduccionbibliografica> tbProduccionbibliograficaList;
     @OneToMany(mappedBy = "idLineainvestigacion")
     private List<TbArticulospublicados> tbArticulospublicadosList;
     @OneToMany(mappedBy = "idLineainvestigacion")
     private List<TbActividadesevaluador> tbActividadesevaluadorList;
-    @JoinColumn(name = "id_actividadeseval", referencedColumnName = "id_actividadeseval")
-    @ManyToOne
-    private TbActividadesevaluador idActividadeseval;
-    @JoinColumn(name = "id_actividadesform", referencedColumnName = "id_actividades_form")
-    @ManyToOne
-    private TbActividadesform idActividadesform;
-    @JoinColumn(name = "id_articulospublicados", referencedColumnName = "id_articulospub")
-    @ManyToOne
-    private TbArticulospublicados idArticulospublicados;
-    @JoinColumn(name = "id_produccionbibliografica", referencedColumnName = "id_produccionbib")
-    @ManyToOne
-    private TbProduccionbibliografica idProduccionbibliografica;
-    @JoinColumn(name = "id_produccionta", referencedColumnName = "id_produccionta")
-    @ManyToOne
-    private TbProduccionTA idProduccionta;
-    @OneToMany(mappedBy = "idLineainvestigacion")
-    private List<TbActividadesform> tbActividadesformList;
     @OneToMany(mappedBy = "idLineainvestigacion")
     private List<TbProduccionTA> tbProduccionTAList;
 
@@ -128,6 +111,15 @@ public class TbLineainvestigacion implements Serializable {
     }
 
     @XmlTransient
+    public List<TbActividadesform> getTbActividadesformList() {
+        return tbActividadesformList;
+    }
+
+    public void setTbActividadesformList(List<TbActividadesform> tbActividadesformList) {
+        this.tbActividadesformList = tbActividadesformList;
+    }
+
+    @XmlTransient
     public List<TbProduccionbibliografica> getTbProduccionbibliograficaList() {
         return tbProduccionbibliograficaList;
     }
@@ -152,55 +144,6 @@ public class TbLineainvestigacion implements Serializable {
 
     public void setTbActividadesevaluadorList(List<TbActividadesevaluador> tbActividadesevaluadorList) {
         this.tbActividadesevaluadorList = tbActividadesevaluadorList;
-    }
-
-    public TbActividadesevaluador getIdActividadeseval() {
-        return idActividadeseval;
-    }
-
-    public void setIdActividadeseval(TbActividadesevaluador idActividadeseval) {
-        this.idActividadeseval = idActividadeseval;
-    }
-
-    public TbActividadesform getIdActividadesform() {
-        return idActividadesform;
-    }
-
-    public void setIdActividadesform(TbActividadesform idActividadesform) {
-        this.idActividadesform = idActividadesform;
-    }
-
-    public TbArticulospublicados getIdArticulospublicados() {
-        return idArticulospublicados;
-    }
-
-    public void setIdArticulospublicados(TbArticulospublicados idArticulospublicados) {
-        this.idArticulospublicados = idArticulospublicados;
-    }
-
-    public TbProduccionbibliografica getIdProduccionbibliografica() {
-        return idProduccionbibliografica;
-    }
-
-    public void setIdProduccionbibliografica(TbProduccionbibliografica idProduccionbibliografica) {
-        this.idProduccionbibliografica = idProduccionbibliografica;
-    }
-
-    public TbProduccionTA getIdProduccionta() {
-        return idProduccionta;
-    }
-
-    public void setIdProduccionta(TbProduccionTA idProduccionta) {
-        this.idProduccionta = idProduccionta;
-    }
-
-    @XmlTransient
-    public List<TbActividadesform> getTbActividadesformList() {
-        return tbActividadesformList;
-    }
-
-    public void setTbActividadesformList(List<TbActividadesform> tbActividadesformList) {
-        this.tbActividadesformList = tbActividadesformList;
     }
 
     @XmlTransient

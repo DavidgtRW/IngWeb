@@ -62,14 +62,14 @@ public class TbActividadesform implements Serializable {
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    @OneToMany(mappedBy = "idActividadesform")
-    private List<TbLineainvestigacion> tbLineainvestigacionList;
     @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
     @ManyToOne
     private TbInvestigador idInvestigador;
     @JoinColumn(name = "id_lineainvestigacion", referencedColumnName = "id_lineainvestigacion")
     @ManyToOne
     private TbLineainvestigacion idLineainvestigacion;
+    @OneToMany(mappedBy = "idActividadesform")
+    private List<TbAutoresActform> tbAutoresActformList;
 
     public TbActividadesform() {
     }
@@ -124,15 +124,6 @@ public class TbActividadesform implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    @XmlTransient
-    public List<TbLineainvestigacion> getTbLineainvestigacionList() {
-        return tbLineainvestigacionList;
-    }
-
-    public void setTbLineainvestigacionList(List<TbLineainvestigacion> tbLineainvestigacionList) {
-        this.tbLineainvestigacionList = tbLineainvestigacionList;
-    }
-
     public TbInvestigador getIdInvestigador() {
         return idInvestigador;
     }
@@ -147,6 +138,15 @@ public class TbActividadesform implements Serializable {
 
     public void setIdLineainvestigacion(TbLineainvestigacion idLineainvestigacion) {
         this.idLineainvestigacion = idLineainvestigacion;
+    }
+
+    @XmlTransient
+    public List<TbAutoresActform> getTbAutoresActformList() {
+        return tbAutoresActformList;
+    }
+
+    public void setTbAutoresActformList(List<TbAutoresActform> tbAutoresActformList) {
+        this.tbAutoresActformList = tbAutoresActformList;
     }
 
     @Override

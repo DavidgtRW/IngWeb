@@ -51,14 +51,14 @@ public class TbActividadesevaluador implements Serializable {
     @Column(name = "fecha_sustentacion")
     @Temporal(TemporalType.DATE)
     private Date fechaSustentacion;
+    @OneToMany(mappedBy = "idActividadeseval")
+    private List<TbAutoresActeval> tbAutoresActevalList;
     @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
     @ManyToOne
     private TbInvestigador idInvestigador;
     @JoinColumn(name = "id_lineainvestigacion", referencedColumnName = "id_lineainvestigacion")
     @ManyToOne
     private TbLineainvestigacion idLineainvestigacion;
-    @OneToMany(mappedBy = "idActividadeseval")
-    private List<TbLineainvestigacion> tbLineainvestigacionList;
 
     public TbActividadesevaluador() {
     }
@@ -96,6 +96,15 @@ public class TbActividadesevaluador implements Serializable {
         this.fechaSustentacion = fechaSustentacion;
     }
 
+    @XmlTransient
+    public List<TbAutoresActeval> getTbAutoresActevalList() {
+        return tbAutoresActevalList;
+    }
+
+    public void setTbAutoresActevalList(List<TbAutoresActeval> tbAutoresActevalList) {
+        this.tbAutoresActevalList = tbAutoresActevalList;
+    }
+
     public TbInvestigador getIdInvestigador() {
         return idInvestigador;
     }
@@ -110,15 +119,6 @@ public class TbActividadesevaluador implements Serializable {
 
     public void setIdLineainvestigacion(TbLineainvestigacion idLineainvestigacion) {
         this.idLineainvestigacion = idLineainvestigacion;
-    }
-
-    @XmlTransient
-    public List<TbLineainvestigacion> getTbLineainvestigacionList() {
-        return tbLineainvestigacionList;
-    }
-
-    public void setTbLineainvestigacionList(List<TbLineainvestigacion> tbLineainvestigacionList) {
-        this.tbLineainvestigacionList = tbLineainvestigacionList;
     }
 
     @Override

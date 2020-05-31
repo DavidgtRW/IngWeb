@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -55,9 +53,6 @@ public class TbLibretamilitar implements Serializable {
     private String distrito;
     @OneToMany(mappedBy = "idLibretamilitar")
     private List<TbInvestigador> tbInvestigadorList;
-    @JoinColumn(name = "id_investigador", referencedColumnName = "id_investigador")
-    @ManyToOne
-    private TbInvestigador idInvestigador;
 
     public TbLibretamilitar() {
     }
@@ -110,14 +105,6 @@ public class TbLibretamilitar implements Serializable {
 
     public void setTbInvestigadorList(List<TbInvestigador> tbInvestigadorList) {
         this.tbInvestigadorList = tbInvestigadorList;
-    }
-
-    public TbInvestigador getIdInvestigador() {
-        return idInvestigador;
-    }
-
-    public void setIdInvestigador(TbInvestigador idInvestigador) {
-        this.idInvestigador = idInvestigador;
     }
 
     @Override
