@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
@@ -36,8 +35,8 @@ public class UsuarioBean implements Serializable {
     @EJB
     private TbUsuarioFacadeLocal tbUsuarioFacadeLocal;
     
-    public static final String ESTADO_ACTIVO = "ACTIVO";
-    public static final String ESTADO_INACTIVO = "INACTIVO";
+    private static final String ESTADO_ACTIVO = "ACTIVO";
+    private static final String ESTADO_INACTIVO = "INACTIVO";
     
     private List<SelectItem> estados;
     private Long idUsuario;
