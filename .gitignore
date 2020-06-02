@@ -11,4 +11,6 @@
 /IngWeb-ejb/dist/
 *.dpf
 
-dist/gfdeploy/IngWeb/IngWeb-war_war/
+
+
+dist/IngWeb.ear

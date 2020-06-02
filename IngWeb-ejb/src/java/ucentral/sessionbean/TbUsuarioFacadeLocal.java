@@ -30,4 +30,8 @@ public interface TbUsuarioFacadeLocal {
 
     int count();
     
+    TbUsuario findByCredenciales(String usuario, String contraseña);
+    
+    int ultimoRegistro();
+    
 }

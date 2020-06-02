@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body style="text-align:center">
+        <div align="center">
+            <p:growl id="mensajes" showDetail="true" life="2000" />
+
+            <p:panel header="Registro de investigadores" style="width:400px">
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="nombre" value="Nombre:" />
+                        <p:inputText value="#{registroInvestigadorBean.nombre}" id="nombre"
+                                     required="true" label="username" />
+
+
+                        <h:outputLabel for="nombre" value="Apellido:" />
+                        <p:inputText value="#{registroInvestigadorBean.primerApellido}" id="apellido" 
+                                     required="true" label="apellido" />
+
+
+                        <h:outputLabel for="correo" value="Correo:" />
+                        <p:inputText value="#{registroInvestigadorBean.segundoApellido}" id="correo" required="true"
+                                     label="correo" />
+                        
+                        <h:outputLabel for="correo2" value="Tipo documento:" />
+                        <p:inputText value="#{registroInvestigadorBean.tipoDocuemnto}" id="correo2" required="true"
+                                     label="tipo doc" />
+                        
+                        <h:outputLabel for="correo3" value="Numero docuemnto:" />
+                        <p:inputText value="#{registroInvestigadorBean.numDocumento}" id="correo3" required="true"
+                                     label="numero doc" />
+                        
+                        <h:outputLabel for="correo4" value="Contraseña: " />
+                        <p:inputText value="#{registroInvestigadorBean.contrasena}" id="correo4" required="true"
+                                     label="contraseña" />
+                        <f:facet name="footer">
+                            <p:commandButton id="loginButton" value="Crear"
+                                             action="#{registroInvestigadorBean.crearUsuarioInvestigador()}" update=":mensajes" 
+                                             oncomplete="manejarLogin(xhr, status, args)" />
+                        </f:facet>
+
+
+                    </h:panelGrid>
+                </h:form>
+                <hr></hr>
+                <h:form>
+                    <h:commandLink action = "#{registroInvestigadorBean.ingresar()}" value = "Ya tienes una cuenta, ingresa aqui!"/>
+                </h:form>
+            </p:panel>
+
+        </div>
+    </h:body>
+    <script type="text/javascript">
+        //<![CDATA[
+        function manejarLogin(xhr, status, args) {
+            if (!args.validationFailed && args.estaLogeado) {
+                setTimeout(function () {
+                    window.location = args.view;
+                }, 500);
+            }
+        }
+        //]]>
+    </script>
+</html>
+

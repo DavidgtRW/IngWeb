@@ -1,44 +1,53 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:outputStylesheet name="./css/default.css"/>
-    <h:outputStylesheet name="./css/cssLayout.css"/>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Investigadores</title>
+        <title>Facelet Title</title>
     </h:head>
-    <h:body>
-       <div id="header">
-	<div id="menu" class="container">
-		<ul>
-			<li class="current_page_item"><a href="" accesskey="1" title="">INICIO</a></li>
-			<li><a href="#" accesskey="1" title="">Administrador</a></li>   
-			<li><a href="prueba.html" accesskey="2" title="">Investigador</a></li>
-
-		</ul>
-	</div>
-</div>
+    <h:body style="text-align:center">
+        <div align="center">
 
 
-<div id="page" class="container">
-	<div id="content">
-		<div class="title">
-			<h2>INVESTIGADORES</h2>
-		</div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci enim, condimentum vel turpis ut, 
-		interdum imperdiet sem. Ut varius suscipit justo vel ornare. Aenean at turpis euismod odio porta accumsan sit amet ut nisi. 
-		Vivamus semper, tellus bibendum molestie pharetra, mi purus dignissim tellus, ut ultricies neque sem vitae orci. 
-		Nam velit turpis, efficitur ac velit nec, blandit scelerisque magna. Vestibulum in mattis massa.. </p>
-	</div>
-	<img src="INVESTIGADORES.jpg" width="600" height="400" />
-</div>
+            <p:growl id="mensajes" showDetail="true" life="2000" />
+            <p:panel header="Login" style="width:400px">
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Usuario:" />
+                        <p:inputText value="#{usuarioBean.nombreUsuario}" id="username"
+                                     required="true" label="username" />
+                        <h:outputLabel for="password" value="Clave:" />
+                        <p:password value="#{usuarioBean.contrasena}" id="password" required="true"
+                                    label="password" />
+                        <f:facet name="footer">
+                            <p:commandButton id="loginButton" value="Login"
+                                             action="#{usuarioBean.validateUsernamePassword()}" update=":mensajes" 
+                                             oncomplete="manejarLogin(xhr, status, args)" />
+                        </f:facet>
 
 
+                    </h:panelGrid>
+                </h:form>
+                <hr></hr>
+                <h:form>
+                    <h:commandLink action = "#{usuarioBean.registrar}" value = "No tienes una cuenta?, registrate aqui!"/>
+                </h:form>
+            </p:panel>
 
-<div id="copyright" class="container">
-	<p>&copy; INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
-</div>
-
+        </div>
     </h:body>
+    <script type="text/javascript">
+        //<![CDATA[
+        function manejarLogin(xhr, status, args) {
+            if (!args.validationFailed && args.estaLogeado) {
+                setTimeout(function () {
+                    window.location = args.view;
+                }, 500);
+            }
+        }
+        //]]>
+    </script>
 </html>
 
