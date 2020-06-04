@@ -18,9 +18,11 @@
                         <h:outputLabel for="username" value="Usuario:" />
                         <p:inputText value="#{usuarioBean.nombreUsuario}" id="username"
                                      required="true" label="username" />
+                        
                         <h:outputLabel for="password" value="Clave:" />
                         <p:password value="#{usuarioBean.contrasena}" id="password" required="true"
                                     label="password" />
+                        
                         <f:facet name="footer">
                             <p:commandButton id="loginButton" value="Login"
                                              action="#{usuarioBean.validateUsernamePassword()}" update=":mensajes" 

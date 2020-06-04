@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    </h:head>
+
+    <div id="header">
+        <div id="menu" class="container">
+            <ul>
+                <p:button outcome="index" value="HOME" style=" border-radius: 5px;  background: transparent;  color: white; border: #4E4D4D; padding: 0px 40px;"/>
+                <p:button outcome="formulario" value="INVESTIGADOR" style="  border-radius: 5px;  background: transparent; padding: 0px 0px; color: white; border: transparent;" />
+                <p:button value="ADMINISTRADOR" style="  border-radius: 5px; background: transparent; padding: 0px -20px; color: white; border: transparent;"/>
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="page" class="container">
+
+
+        <h:body style="text-align:center">
+            <div align="center">
+                <p:growl id="mensajes" showDetail="true" life="2000" />
+
+                <p:panel header="Informacion General" style="width:1000px">
+                    <h:form>
+                        <h:panelGrid columns="4" cellpadding="10">
+
+                            <h:outputLabel for="nombre" value="Nombre:" />
+                            <p:inputText value="#{investigadorBean.nombre}" id="nombre"
+                                         required="true" label="username" />
+
+                            <h:outputLabel for="id" value="Id:" />
+                            <p:inputText value="#{investigadorBean.id_investigador}" id="id"
+                                         required="true" label="id" />
+
+
+                            <h:outputLabel for="apellido" value="Primer Apellido:" />
+                            <p:inputText value="#{investigadorBean.primerapellido}" id="apellido" 
+                                         required="true" label="apellido" />
+
+
+                            <h:outputLabel for="apellido2" value="Segudno Apellido" />
+                            <p:inputText value="#{investigadorBean.segundopellido}" id="apellido2" required="true"
+                                         label="correo" />
+
+
+                            <p:outputLabel for="@next" value="Tipo documento:" />
+                            <p:selectOneMenu id="tipodoc" value="#{investigadorBean.tipodocumento}" style="width:200px">
+                                <f:selectItem itemLabel="Cedula" itemValue="Cedula" value="#{investigadorBean.tipodocumento}" />
+                                <f:selectItem itemLabel="Tarjeta Identidad" itemValue="TarjetaI"  value="#{investigadorBean.tipodocumento}"/>
+                                <f:selectItem itemLabel="Cedula de Extranjeria" itemValue="CedulaE"  value="#{investigadorBean.tipodocumento}"/>
+                                 <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"  value="#{investigadorBean.tipodocumento}"/>
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="docuemento" value="Numero docuemnto:" />
+                            <p:inputText value="#{investigadorBean.numerodocumento}" id="docuemento" required="true"
+                                         label="docuemento" />
+
+                            <p:outputLabel for="@next" value="Genero:" />
+                            <p:selectOneMenu id="console" value="#{investigadorBean.genero}" style="width:200px">
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenimo" value="#{investigadorBean.genero}" />
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino"  value="#{investigadorBean.genero}"/>
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="telefono" value="Telefono:" />
+                            <p:inputText value="#{investigadorBean.telefono}" id="telefono" required="true"
+                                         label="telefono" />
+
+                            <h:outputLabel for="correo" value="Correo Electronico:" />
+                            <p:inputText value="#{investigadorBean.correo}" id="correo" required="true"
+                                         label="correo" />
+
+                            <h:outputLabel for="web" value="Link Sitio web" />
+                            <p:inputText value="#{investigadorBean.link}" id="web" required="true"
+                                         label="web" />
+
+                            <p:outputLabel for="popup" value="Fecha Nacimiento" />
+                            <p:calendar id="popup" value="#{investigadorBean.fechanacimiento}" />
+
+                            
+                            
+                            
+                            
+                            <h:outputLabel for="Id_Libreta" value="Numero Libreta Militar" />
+                            <p:inputText value="#{investigadorBean.id_libreta}" id="Id_Libreta" required="true"
+                                         label="Id_Libreta" />
+
+
+
+
+                            <f:facet name="footer">
+                                <p:commandButton id="loginButton" value="Registrar"
+                                                 action="#{investigadorBean.crear(actionListener)}" update=":mensajes" 
+                                                 />
+                            </f:facet>
+
+
+                        </h:panelGrid>
+                    </h:form>
+                    <hr></hr>
+
+                </p:panel>
+
+            </div>
+        </h:body>
+    </div>
+
+    <div id="copyright" class="container">
+        <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
+    </div>
+
+</html>
+
