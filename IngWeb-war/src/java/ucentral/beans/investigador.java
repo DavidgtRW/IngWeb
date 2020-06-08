@@ -16,51 +16,56 @@ import ucentral.entities.TbDireccion;
 import ucentral.entities.TbInvestigador;
 import ucentral.entities.TbLibretamilitar;
 import ucentral.entities.TbNacionalidad;
+import ucentral.sessionbean.TbDireccionFacadeLocal;
 import ucentral.sessionbean.TbInvestigadorFacade;
 import ucentral.sessionbean.TbInvestigadorFacadeLocal;
 import ucentral.sessionbean.TbLibretamilitarFacadeLocal;
+import ucentral.sessionbean.TbNacionalidadFacadeLocal;
 
 /**
  *
  * @author GUTIERREZ
  */
-
 @Named(value = "investigadorBean")
 @SessionScoped
-public class investigador implements Serializable{
+public class investigador implements Serializable {
 
     @EJB
     private TbInvestigadorFacadeLocal investigadorfade;
     @EJB
     private TbLibretamilitarFacadeLocal libretafacade;
+    @EJB
+    private TbNacionalidadFacadeLocal nacionalidadfacade;
+    @EJB
+    private TbDireccionFacadeLocal direccionfacade;
 
     //DATOS DE LA TABLA INVESTIGADOR 
-    private String id_investigador ;
+    //private String id_investigador;
     private String nombre;
     private String primerapellido;
     private String segundopellido;
     private Date fechanacimiento;
-    private String fechainscripcion;
+    private Date fechainscripcion;
     private String tipodocumento;
     private Long numerodocumento;
-    private int edad;
+    private String edad;
     private String link;
     private String correo;
     private String telefono;
     private String genero;
 
     //DATOS DE LA TABLA NACIONALIDAD
-    private Long id_nacionalidad;
+   // private Long id_nacionalidad;
     private String nacionalidad;
 
     //DATOS DE LA TABLA LIBRETA MILITAR
-    private String id_libreta; //Resive String
+    //private Long id_libretam; //Resive String
     private Long numero;
     private String clase;
     private String distrito;
 
     //DATOS DE LA TABLA DIRECCION
-    private Long id_direccion;
+    //private Long id_direccion;
     private String carrera;
     private String calle;
 
@@ -68,59 +73,155 @@ public class investigador implements Serializable{
      * Creates a new instance of investigador
      */
     public investigador() {
-        System.out.println("aaaaaaaaa");
+        System.out.println("Funciona el registro");
         //this.id_investigador = "";
 
     }
 
     public void crear(ActionListener actionListener) {
         //Objeto Nacionalidad
-        //TbNacionalidad N = new TbNacionalidad();
-        //N.setIdNacionalidad(id_nacionalidad);
-        //N.setNombrePais(nacionalidad);
+        TbNacionalidad N = new TbNacionalidad();
+        Long id_nacionalidad = Long.valueOf(nacionalidadfacade.ultimoRegistro());
+        N.setIdNacionalidad(id_nacionalidad);
+        N.setNombrePais(nacionalidad);
         
+        System.out.println("NACIONALIDAD");
+        System.out.println(nacionalidad);
+        
+        nacionalidadfacade.create(N);
+        
+         //Objeto Libreta (Check)
+        TbLibretamilitar L = new TbLibretamilitar();
+        
+        Long id_libretam = Long.valueOf(libretafacade.ultimoRegistrolibreta());
+        L.setIdLibretamilitar(id_libretam);
+       
+        System.out.println("id_libreta");
+        System.out.println(id_libretam);
+        
+        L.setNumero(numero);
+        System.out.println("numero libreta");
+        System.out.println(numero);   
+              
+        
+        L.setDistrito(distrito);
+        System.out.println("distrito");
+        System.out.println(distrito);
+        
+        L.setClase(clase);
+        System.out.println("CLASE");
+        System.out.println(clase);
+
+        libretafacade.create(L);
+
         //Objeto Direccion
-        //TbDireccion D = new TbDireccion();
-        //D.setIdDireccion(id_direccion);
-        //D.setCarrera(carrera);
-        //D.setCalle(calle);
+        TbDireccion D = new TbDireccion();
+        Long id_direccion = Long.valueOf(direccionfacade.ultimoRegistro());
+        D.setIdDireccion(id_direccion);
+        D.setCarrera(carrera);
+        D.setCalle(calle);
         
+        direccionfacade.create(D);
         
         
         // Objeto investigador
         TbInvestigador I = new TbInvestigador();
-        //I.setIdInvestigador(Long.parseLong(id_investigador));
-        //I.setNombre(nombre);
-        //I.setPrimerApellido(primerapellido);
-        //I.setSegundoApellido(segundopellido);
-        //I.setTipoDocumento(tipodocumento);
-        //I.setNoDocumento(numerodocumento);
-        //I.setGenero(genero);
-        //I.setFechaNacimiento(fechanacimiento);
-        // I.setFechaInscripcion(null);
-        
-        
-        //I.setEdad(edad);
-        //I.setWeb(link);
-        //I.setCorreo(correo);
-        //I.setTelefono(telefono);
-        
+        Long id_investigador = Long.valueOf(investigadorfade.ultimoRegistro());
+        I.setIdInvestigador(id_investigador);
 
-        //investigadorfade.create(I);
+        I.setNombre(nombre);        
+        System.out.println("nombre _investigador");
+        System.out.println(nombre);
+        I.setPrimerApellido(primerapellido);
+        I.setSegundoApellido(segundopellido);
+        I.setTipoDocumento(tipodocumento);
+        I.setNoDocumento(numerodocumento);
+        I.setGenero(genero);
+        I.setFechaNacimiento(fechanacimiento);
+        I.setFechaInscripcion(fechainscripcion);
+
+        I.setEdad(Integer.parseInt(edad));
+        I.setWeb(link);
+        I.setCorreo(correo);
+        I.setTelefono(telefono);
+
+        investigadorfade.create(I);
         //System.out.println("Funcionaaa! :)");
         //return "investigador";
-        
-        //Objeto Libreta 
-        TbLibretamilitar L = new TbLibretamilitar();
-        L.setIdLibretamilitar(Long.parseLong(id_libreta));
-        System.out.println("ucentral.beans.investigador.crear()");
-        //L.setNumero(numero);
-        //L.setClase(clase);
-        //L.setDistrito(distrito);
-        
-        libretafacade.create(L);
-        
-        
+
+
+    }
+
+    public TbDireccionFacadeLocal getDireccionfacade() {
+        return direccionfacade;
+    }
+
+    public void setDireccionfacade(TbDireccionFacadeLocal direccionfacade) {
+        this.direccionfacade = direccionfacade;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public Date getFechainscripcion() {
+        return fechainscripcion;
+    }
+
+    public void setFechainscripcion(Date fechainscripcion) {
+        this.fechainscripcion = fechainscripcion;
+    }
+
+    public TbNacionalidadFacadeLocal getNacionalidadfacade() {
+        return nacionalidadfacade;
+    }
+
+    public void setNacionalidadfacade(TbNacionalidadFacadeLocal nacionalidadfacade) {
+        this.nacionalidadfacade = nacionalidadfacade;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public String getClase() {
+        return clase;
+    }
+
+    public void setClase(String clase) {
+        this.clase = clase;
+    }
+
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
     }
 
     public String getGenero() {
@@ -159,28 +260,13 @@ public class investigador implements Serializable{
         return fechanacimiento;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
 
     public void setFechanacimiento(Date fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
-    
-    public List<TbInvestigador> getInvestigador(){
+
+    public List<TbInvestigador> getInvestigador() {
         return investigadorfade.findAll();
-    }
-
-    public String getId_investigador() {
-        return id_investigador;
-    }
-
-    public void setId_investigador(String id_investigador) {
-        this.id_investigador = id_investigador;
     }
 
     public String getNombre() {
@@ -239,31 +325,13 @@ public class investigador implements Serializable{
         this.libretafacade = libretafacade;
     }
 
-    public String getId_libreta() {
-        return id_libreta;
-    }
-
-    public void setId_libreta(String id_libreta) {
-        this.id_libreta = id_libreta;
-    }
-
-
     public Long getNumero() {
         return numero;
     }
 
     public void setNumero(Long numero) {
         this.numero = numero;
-    }
-
-   
-
-    
-    
-    
-    
-    
-    
-    
+    } 
+  
 
 }

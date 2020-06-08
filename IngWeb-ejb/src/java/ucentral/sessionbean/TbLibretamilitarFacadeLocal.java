@@ -30,4 +30,7 @@ public interface TbLibretamilitarFacadeLocal {
 
     int count();
     
+    int ultimoRegistrolibreta();
+    
+    
 }

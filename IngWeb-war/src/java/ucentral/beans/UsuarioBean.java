@@ -67,10 +67,22 @@ public class UsuarioBean implements Serializable {
 
     public void crear() {
         try {
+            /*
             TbUsuario usuario = new TbUsuario();
+            Long id = Long.valueOf(tbUsuarioFacadeLocal.ultimoRegistro());
+            usuario.setIdUsuario(id);
             usuario.setNombre(nombreUsuario);
             usuario.setContrasena(contrasena);
             usuario.setEstado(estado);
+            tbUsuarioFacadeLocal.create(usuario);
+            */
+            TbUsuario usuario = new TbUsuario();
+            Long id = Long.valueOf(tbUsuarioFacadeLocal.ultimoRegistro());
+            usuario.setIdUsuario(id);
+            usuario.setNombre("PRB");
+            usuario.setContrasena("PRB");
+            usuario.setEstado("PRB");
+            System.out.println("MARCA");
             tbUsuarioFacadeLocal.create(usuario);
         } catch (Exception e) {
             System.out.println("Error creando usuario"+e);
@@ -123,6 +135,8 @@ public class UsuarioBean implements Serializable {
     public String registrar() {
         return "Registrar";
     }
+    
+    
 
     public Long getIdUsuario() {
         return idUsuario;
