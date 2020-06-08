@@ -30,4 +30,6 @@ public interface TbNacionalidadFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }

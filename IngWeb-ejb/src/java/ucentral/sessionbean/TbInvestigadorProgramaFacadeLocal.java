@@ -30,4 +30,6 @@ public interface TbInvestigadorProgramaFacadeLocal {
 
     int count();
     
+    int ultimoRegistropro();
+    
 }

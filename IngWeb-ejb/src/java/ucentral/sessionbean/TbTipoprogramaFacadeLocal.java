@@ -30,4 +30,5 @@ public interface TbTipoprogramaFacadeLocal {
 
     int count();
     
+     int ultimoRegistro();
 }

@@ -5,8 +5,22 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Registro Investigador</title>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
     </h:head>
+    <div id="header">
+        <div id="menu" class="container">
+            <ul>
+                <p:button outcome="index" value="HOME" style=" border-radius: 5px;  background: transparent;  color: white; border: #4E4D4D; padding: 0px 40px;"/>
+                <p:button outcome="index" value="INVESTIGADOR" style="  border-radius: 5px;  background: transparent; padding: 0px 0px; color: white; border: transparent;" />
+                <p:button value="ADMINISTRADOR" style="  border-radius: 5px; background: transparent; padding: 0px -20px; color: white; border: transparent;"/>
+
+            </ul>
+        </div>
+    </div>
+    <br/>
+    <br/>
+
     <h:body style="text-align:center">
         <div align="center">
             <p:growl id="mensajes" showDetail="true" life="2000" />
@@ -27,15 +41,15 @@
                         <h:outputLabel for="correo" value="Correo:" />
                         <p:inputText value="#{registroInvestigadorBean.segundoApellido}" id="correo" required="true"
                                      label="correo" />
-                        
+
                         <h:outputLabel for="correo2" value="Tipo documento:" />
                         <p:inputText value="#{registroInvestigadorBean.tipoDocuemnto}" id="correo2" required="true"
                                      label="tipo doc" />
-                        
+
                         <h:outputLabel for="correo3" value="Numero docuemnto:" />
                         <p:inputText value="#{registroInvestigadorBean.numDocumento}" id="correo3" required="true"
                                      label="numero doc" />
-                        
+
                         <h:outputLabel for="correo4" value="Contraseña: " />
                         <p:inputText value="#{registroInvestigadorBean.contrasena}" id="correo4" required="true"
                                      label="contraseña" />
@@ -67,5 +81,9 @@
         }
         //]]>
     </script>
+    <br/>
+    <div id="copyright" class="container">
+        <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
+    </div>
 </html>
 
