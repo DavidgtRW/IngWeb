@@ -27,31 +27,27 @@
 
 
             <p:growl id="mensajes" showDetail="true" life="2000" />
-            <p:panel header="Login" style="width:400px">
+            <p:panel header="Iniciar sesion Administrador" style="width:400px">
                 <h:form>
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="username" value="Usuario:" />
-                        <p:inputText value="#{usuarioBean.nombreUsuario}" id="username"
+                        <p:inputText value="#{iniciarSesionBean.nombreUsuario}" id="username"
                                      required="true" label="username" />
 
                         <h:outputLabel for="password" value="Clave:" />
-                        <p:password value="#{usuarioBean.contrasena}" id="password" required="true"
+                        <p:password value="#{iniciarSesionBean.contrasena}" id="password" required="true"
                                     label="password" />
 
                         <f:facet name="footer">
                             <div align="center">
                                 <p:commandButton id="loginButton" value="Ingresar"
-                                                 action="#{usuarioBean.validateUsernamePassword()}" update=":mensajes" 
+                                                 action="#{iniciarSesionBean.validateUsernamePassword()}" update=":mensajes" 
                                                  oncomplete="manejarLogin(xhr, status, args)" />
                             </div>
                         </f:facet>
 
 
                     </h:panelGrid>
-                </h:form>
-                <hr></hr>
-                <h:form>
-                    <h:commandLink action = "#{usuarioBean.registrar}" value = "No tienes una cuenta?, registrate aqui!"/>
                 </h:form>
             </p:panel>
 

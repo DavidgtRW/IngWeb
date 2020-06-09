@@ -8,21 +8,9 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>succes</from-outcome>
-            <to-view-id>/newjsf.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>Registrar</from-outcome>
             <to-view-id>/registrarInvestigador.xhtml</to-view-id>
-        </navigation-case>
-          <navigation-case>
-            <from-outcome>cambiar_contrasena</from-outcome>
-            <to-view-id>/estudianteCambioContrasena.xhtml</to-view-id>
-        </navigation-case>
-         <navigation-case>
-            <from-outcome>ingresarEstudiante</from-outcome>
-            <to-view-id>/administradorPrincipal.xhtml</to-view-id>
-        </navigation-case>
+        </navigation-case>     
     </navigation-rule>
     
     <navigation-rule>
@@ -30,6 +18,14 @@
         <navigation-case>
             <from-outcome>ingresar</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/indexAdmin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>admin</from-outcome>
+            <to-view-id>/pantallaPrincipalAdministrador.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 

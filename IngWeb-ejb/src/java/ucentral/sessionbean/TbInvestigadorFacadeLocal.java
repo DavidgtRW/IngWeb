@@ -30,6 +30,8 @@ public interface TbInvestigadorFacadeLocal {
 
     int count();
     
-     int ultimoRegistro();
+    int ultimoRegistro();
+    
+    void modificar(TbInvestigador tbInvestigador);
     
 }
