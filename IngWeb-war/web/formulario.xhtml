@@ -17,15 +17,6 @@
 
 
 
-        <div id="header">
-            <div id="menu" class="container">
-                <ul>
-
-                </ul>
-            </div>
-        </div>
-
-
         <div>
             <div id="left">
                 <ui:insert name="left">
@@ -37,19 +28,18 @@
 
                         <p:panelMenu style="width:300px">
                             <p:submenu label="Historial academico">
-                                <p:menuitem value="Pregrado" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
                                 <p:menuitem value="Especialización" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
-                                <p:menuitem value="Maestría" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
-                                <p:menuitem value="Doctorado" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
+                                <p:menuitem value="Doctorado" outcome="historialAcademicoDoctorado" oncomplete="limpiarForm()" icon="pi pi-save" />
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial Laboral Docente">
-                                <p:menuitem value="Registro Laboral Docente" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                               <p:menuitem value="Registro Laboral Docente" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                               <p:menuitem value="Registro Laboral Profesional" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Laboral Docente" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:separator />
                             <p:submenu label="Historial Laboral Profesional">
-                                <p:menuitem value="Registro Laboral Profesional" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Laboral Profesional"  ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Laboral Profesional" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:menuitem value="Mobile" icon="pi pi-mobile" />

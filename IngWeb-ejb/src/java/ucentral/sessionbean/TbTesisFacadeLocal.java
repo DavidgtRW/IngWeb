@@ -30,4 +30,6 @@ public interface TbTesisFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }
