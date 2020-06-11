@@ -29,5 +29,7 @@ public interface TbProduccionTAFacadeLocal {
     List<TbProduccionTA> findRange(int[] range);
 
     int count();
-    
+
+    int ultimoRegistro();
+
 }

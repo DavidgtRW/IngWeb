@@ -46,11 +46,11 @@ public class TbProduccionbibliografica implements Serializable {
     @Column(name = "id_produccionbib")
     private Long idProduccionbib;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "puntos")
     private int puntos;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 100)
     @Column(name = "nombre")
     private String nombre;

@@ -8,6 +8,7 @@ package ucentral.sessionbean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import ucentral.entities.TbAutoresProdbib;
 
 /**
@@ -27,6 +28,19 @@ public class TbAutoresProdbibFacade extends AbstractFacade<TbAutoresProdbib> imp
 
     public TbAutoresProdbibFacade() {
         super(TbAutoresProdbib.class);
+    }
+
+    @Override
+    public int ultimoRegistro() {
+        Query query = em.createNativeQuery("SELECT max(id_autprodbib) FROM public.tb_autores_prodbib");
+        int valor = 1;
+        if(query.getSingleResult()==null){
+            return valor;
+        }else{
+            valor = ((Long) query.getSingleResult()).intValue() + 1;
+        }
+            
+        return valor;
     }
     
 }

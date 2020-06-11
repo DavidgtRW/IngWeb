@@ -29,18 +29,28 @@
                         <p:panelMenu style="width:300px">
                             <p:submenu label="Historial academico">
                                 <p:menuitem value="Especialización" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
-                                <p:menuitem value="Doctorado" outcome="historialAcademicoDoctorado" oncomplete="limpiarForm()" icon="pi pi-save" />
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
-                            <p:submenu label="Historial Laboral Docente">
-                               <p:menuitem value="Registro Laboral Docente" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
-                               <p:menuitem value="Registro Laboral Profesional" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
-                                <p:menuitem value="Actualizacion Laboral Docente" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            <p:submenu label="Historial Laboral">
+                               <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:separator />
-                            <p:submenu label="Historial Laboral Profesional">
-                                <p:menuitem value="Registro Laboral Profesional"  ajax="false" icon="pi pi-times"/>
-                                <p:menuitem value="Actualizacion Laboral Profesional" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            <p:submenu label="Actividades">
+                                <p:menuitem value="Registro Actividades de formacion" outcome="actividadesformacion"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Actividades de evaluador" outcome="actividadesevaluador"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Actividades" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Produccion">
+                                <p:menuitem value="Registro Produccion bibliografica" outcome="produccionesbibliograficas"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Produccion Técnica o Arte" outcome="produccionTA"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Produccion" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Articulos">
+                                <p:menuitem value="Registro Articulos publicados" outcome="articulospublicados"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Articulos publicados" action="#{menuView.update}" icon="pi pi-times"/>
                             </p:submenu>
                             <p:menuitem value="Mobile" icon="pi pi-mobile" />
 

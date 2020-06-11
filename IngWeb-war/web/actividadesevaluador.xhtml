@@ -17,6 +17,7 @@
 
 
 
+       
         <div>
             <div id="left">
                 <ui:insert name="left">
@@ -67,14 +68,13 @@
 
 
 
-
             <div id="content" class="left_content">
                 <ui:insert name="content">
                     <h:body style="text-align:center">
                         <div align="center">
                             <p:growl id="mensajes" showDetail="true" life="2000" />
 
-                            <p:panel header="Informacion Academica" style="width:1000px">
+                            <p:panel header="Actividades de Evaluador" style="width:1000px">
                                 <h:form id="formulario">
 
                                     <script type="text/javascript">
@@ -85,73 +85,43 @@
                                     </script>
 
                                     <h:panelGrid columns="4" cellpadding="10" >
-                                        
-                                         <p:outputLabel for="@next" value="Tipo de Programa" />
-                                         <p:selectOneMenu id="console" value="#{historialacademicoBe.tipoprograma}" style="width:200px">
-                                            <f:selectItem itemLabel="Pregrado" itemValue="Pregrado"/>
-                                            <f:selectItem itemLabel="Especializacion" itemValue="Especializacion"/>
-                                            <f:selectItem itemLabel="Doctorado" itemValue="Doctorado"/>
-                                            <f:selectItem itemLabel="Maestria" itemValue="Maestria"/>
-                                        </p:selectOneMenu>
-                                        
-                                        <h:outputLabel for="Nombrepre" value="Nombre Programa" />
-                                        <p:inputText value="#{historialacademicoBe.nombrepre}" id="Nombrepre" required="true"
-                                                     label="Nombrepre" />
-                                        
-                                        <h:outputLabel for="numerosemestres" value="Numero De Semestres" />
-                                        <p:inputText value="#{historialacademicoBe.numerosemestres}" id="numerosemestres" required="true"
-                                                     label="numerosemestres" />
-                                        
-                                        <p:outputLabel for="fechaini" value="Fecha de Inicio" />
-                                        <p:datePicker id="fechaini" value="#{historialacademicoBe.fechaInicio}" 
+          
+
+                                        <h:outputLabel for="nomotroautor" value="Nombre otro autor" />
+                                        <p:inputText   value="#{actividadesevaluadorbean.nombreautor}"  id="nomotroautor" required="true"
+                                                                     label="nomotroautor" />
+
+                                        <h:outputLabel for="apeotroautor" value="Apellido otro autor" />
+                                        <p:inputText  value="#{actividadesevaluadorbean.apellidoautor}" id="apeotroautor" required="true"
+                                                                     label="apeotroautor" />
+
+                                        <p:outputLabel for="fechain" value="Fecha de sustentacion" />
+                                        <p:datePicker id="fechain" value="#{actividadesevaluadorbean.fechasustentacion}"
                                                       locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
                                         
+                                        <h:outputLabel for="arealinea" value="Area Linea Investigacion" />
+                                        <p:inputText  value="#{actividadesevaluadorbean.areainvestigacion}"  id="arealinea" required="true"
+                                                                     label="arealinea" />
                                         
-                                        <p:outputLabel for="fechafin" value="Fecha Finalizacion" />
-                                        <p:datePicker id="fechafin" value="#{historialacademicoBe.fechaFin}" 
-                                                      locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
+                                        <h:outputLabel for="nombrelinea" value="Nombre Linea Investigacion" />
+                                        <p:inputText value="#{actividadesevaluadorbean.nombrelinainvestigacion}"  id="nombrelinea" required="true"
+                                                                     label="nombrelinea" />
                                         
-                                          <h:outputLabel for="promedio" value="Promedio Academico" />
-                                          <p:inputText value="#{historialacademicoBe.promediocademico}" id="promedio" required="true"
-                                                     label="promedio" />
-                                          
-                                          <h:outputLabel for="nombreins" value="Nombre Institucion:" />
-                                          <p:inputText value="#{historialacademicoBe.nombreinstitucion}" id="nombreins" required="true"
-                                                     label="nombreins" />
-                                          
-                                        <h:outputLabel for="correoins" value="Correo Institucion:" />
-                                        <p:inputText value="#{historialacademicoBe.correoinstitucion}" id="correoins" required="true"
-                                                     label="correoins" />
+                                        <h:outputLabel for="descripcionlinea" value="Descripcion Linea Investigacion" />
+                                        <p:inputText  value="#{actividadesevaluadorbean.descripcionlineainvestigacion}"  id="descripcionlinea" required="true"
+                                                                     label="descripcionlinea" />
                                         
-                                        <h:outputLabel for="telefonoins" value="Telefono Institucion:" />
-                                        <p:inputText value="#{historialacademicoBe.telefonoinstitucion}" id="telefonoins" required="true"
-                                                     label="telefonoins" />
-                                        
-                                        <h:outputLabel for="resolucionins" value="Resolucion MSI:" />
-                                        <p:inputText value="#{historialacademicoBe.resolucioninstitucion}" id="resolucionins" required="true"
-                                                     label="resolucionins" />
-                                        
-                                        <p:outputLabel for="@next" value="Tipo de institucion:" />
-                                        <p:selectOneMenu id="tipoins" value="#{historialacademicoBe.tipoinstitucion}" style="width:200px">
-                                            <f:selectItem itemLabel="Publica" itemValue="Publica"/>
-                                            <f:selectItem itemLabel="Privada" itemValue="Privada"/>
+                                        <p:outputLabel for="@next" value="Puntos" />
+                                        <p:selectOneMenu id="puntos" value="#{actividadesevaluadorbean.puntosev}" style="width:200px">
+                                            <f:selectItem itemLabel="10" itemValue="10"/>
                                         </p:selectOneMenu>
                                         
-                                        
-                                        <h:outputLabel for="calle" value="Calle:" />
-                                        <p:inputText value="#{historialacademicoBe.calle}" id="calle" required="true"
-                                                     label="calle" />
 
-                                        <h:outputLabel for="carrera" value="Carrera:" />
-                                        <p:inputText value="#{historialacademicoBe.carrera}" id="carrera" required="true"
-                                                     label="carrera" />                                       
-                                        
 
-   
 
                                         <f:facet name="footer">
                                             <p:commandButton id="loginButton" value="Registrar"
-                                                             actionListener="#{historialacademicoBe.crear(actionListener)}" 
+                                                             actionListener="#{actividadesevaluadorbean.crear(actionListener)}" 
                                                              update=":mensajes" 
                                                              oncomplete="limpiarForm()"/>
                                         </f:facet>

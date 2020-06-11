@@ -30,4 +30,6 @@ public interface TbProduccionbibliograficaFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }

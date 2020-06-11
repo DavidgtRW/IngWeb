@@ -144,6 +144,8 @@ public class investigador implements Serializable {
         I.setCorreo(correo);
         I.setTelefono(telefono);
         I.setIdDireccion(D);
+        I.setIdLibretamilitar(L);
+        I.setIdNacionalidad(N);
 
         investigadorfade.create(I);
         //System.out.println("Funcionaaa! :)");

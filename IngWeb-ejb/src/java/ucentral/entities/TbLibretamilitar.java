@@ -42,7 +42,7 @@ public class TbLibretamilitar implements Serializable {
     @Column(name = "id_libretamilitar")
     private Long idLibretamilitar;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "numero")
     private long numero;
     @Size(max = 150)
@@ -131,5 +131,5 @@ public class TbLibretamilitar implements Serializable {
     public String toString() {
         return "ucentral.entities.TbLibretamilitar[ idLibretamilitar=" + idLibretamilitar + " ]";
     }
-    
+
 }

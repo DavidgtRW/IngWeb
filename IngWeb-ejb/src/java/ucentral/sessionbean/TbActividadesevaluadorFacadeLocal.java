@@ -30,4 +30,6 @@ public interface TbActividadesevaluadorFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }
