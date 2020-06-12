@@ -1,0 +1,631 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="resources/css/cssLayout.css"/>
+        <link rel="stylesheet" href="resources/css/default.css"/>
+        <title>Facelets Template</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></link>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    </h:head>
+
+    <body>
+
+        <nav>
+            <div class="nav-wrapper grey darken-3">
+                <a class="brand-logo">Home</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Opcion 1</a></li>
+                    <li><a href="#">Opcion 2</a></li>
+                    <li><a href="#">Opcion 3</a></li>
+                    <li><a href="#">Cerrar Session</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Formulario</div>
+                            <div class="collapsible-body"><span>
+                                    <div class="row">
+                                        <h:form>
+                                            <div class="row">
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Nombre</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.nombre}" id="nombre" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Primer Apellido</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.primerapellido}" id="apellido"  required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Segundo Apellido</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.segundopellido}" id="apellido2" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Tipo documento</label>
+                                                        <select id="Stipodoc" required="true">
+                                                            <option value="Cedula">Cedula</option>
+                                                            <option value="Tarjeta Identidad">Tarjeta Identidad</option>
+                                                            <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                                                        </select>
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Numero documento</label>
+                                                        <input type="number" class="form-control" jsf:value="#{investigadorBean.numerodocumento}" id="docuemento" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Genero</label>
+                                                        <select id="Sgenero" required="true">
+                                                            <option value="Femenino">Femenino</option>
+                                                            <option value="Masculino">Masculino</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>        
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Telefono</label>
+                                                        <input type="number" class="form-control" jsf:value="#{investigadorBean.telefono}" id="telefono" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Correo Electronico</label>
+                                                        <input type="email" class="form-control" jsf:value="#{investigadorBean.correo}" id="correo" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Link Sitio web</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.link}" id="web" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Fecha de nacimiento</label>
+                                                        <input type="text" class=" datepicker" id="fechan" jsf:value="#{investigadorBean.fechanacimiento}" required="true"></input>
+                                                    </div> 
+                                                </div>  
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Edad</label>
+                                                        <input type="number" class="form-control" jsf:value="#{investigadorBean.edad}" id="edad" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Numero Libreta Militar</label>
+                                                        <input type="number" class="form-control" jsf:value="#{investigadorBean.numero}" id="numerolibreta" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Distrito</label>
+                                                        <input type="number" class="form-control" jsf:value="#{investigadorBean.numero}" id="numerolibreta" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Numero Libreta Militar</label>
+                                                        <input type="number" class="form-control" jsf:value="#{investigadorBean.distrito}" id="distritolibreta"  required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Clase</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.clase}" id="claselibreta"  required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Nacionalidad</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.nacionalidad}" id="nacionalidad"  required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Fecha de Inscripcion</label>
+                                                        <input type="text" class=" datepicker" id="fechain" jsf:value="#{investigadorBean.fechainscripcion}"    required="true" ></input>
+                                                    </div> 
+                                                </div>              
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Calle</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.calle}" id="calle" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Carrera</label>
+                                                        <input type="text" class="form-control" jsf:value="#{investigadorBean.carrera}" id="carrera"  required="true"></input>
+                                                    </div> 
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div class="row">
+
+                                                <input type="hidden" id="genero" value="#{investigadorBean.genero}"></input>
+                                                <input type="hidden" id="tipodoc" value="#{investigadorBean.tipodocumento}"></input>
+                                            </div>
+                                            <div class="row center-align">
+
+                                                <p:commandButton id="loginButton" value="Registrar"
+                                                                 action="#{investigadorBean.crear(actionListener)}" />
+                                            </div>
+
+
+
+                                        </h:form>
+                                    </div>    
+
+                                </span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">school</i>Historial academico</div>
+                            <div class="collapsible-body"><span>
+                                    <h:form>
+                                        <div class="row">
+
+                                            <div class="col s4 offset-s4">
+                                                <div class="form-group">
+                                                    <div class="input-field col s12 ">
+                                                        <select id="Stipo" required="true">
+                                                            <option value="Pregrado">Pregrado</option>
+                                                            <option value="Especializacion">Especializacion</option>
+                                                            <option value="Doctorado">Doctorado</option>
+                                                            <option value="Maestria">Maestria</option>
+                                                        </select>
+                                                        <label>Tipo de programa</label>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <input type="hidden" id="tipo" jsf:value="#{historialacademicoBe.tipoprograma}"></input>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Nombre Programa</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.nombrepre}" id="Nombrepre" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Numero De Semestres</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.numerosemestres}" id="numerosemestres" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Fecha de Inicio</label>
+                                                    <input type="text" class=" datepicker" id="fechaini" jsf:value="#{historialacademicoBe.fechaInicio}"   required="true" />
+                                                </div> 
+                                            </div>
+
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Fecha Finalizacion</label>
+                                                    <input type="text" class=" datepicker" id="fechafin" jsf:value="#{historialacademicoBe.fechaFin}"  required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Promedio Academico</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.promediocademico}" id="promedio" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Nombre Institucion</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.nombreinstitucion}" id="nombreins" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Correo Institucion</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.correoinstitucion}" id="correoins" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Telefono Institucion</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.telefonoinstitucion}" id="telefonoins" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Resolucion MSI</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.resolucioninstitucion}" id="resolucionins" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Tipo de institucion</label>
+                                                    <select id="Stipoinstu" required="true">
+                                                        <option value="Publica">Publica</option>
+                                                        <option value="Privada">Privada</option>
+                                                    </select>
+                                                </div> 
+                                                <input type="hidden" id="tipoinstu" jsf:value="#{historialacademicoBe.tipoinstitucion}"></input>
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Calle</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.calle}" id="calle" required="true"/>
+                                                </div> 
+                                            </div>
+                                            <div class="col s4">
+                                                <div class="form-group">
+                                                    <label>Carrera</label>
+                                                    <input type="text" class="form-control" jsf:value="#{historialacademicoBe.carrera}" id="carrera" required="true"/>
+                                                </div> 
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row center-align">
+                                            <p:commandButton id="loginButton" value="Registrar"
+                                                             actionListener="#{historialacademicoBe.crear(actionListener)}" />
+                                        </div>
+                                    </h:form>
+                                </span></div>
+                        </li> 
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">card_travel</i>Historial laboral</div>
+                            <div class="collapsible-body"><span>
+                                    <div class="row">
+                                        <h:form>
+                                            <div class="row">
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Tipo de Programa</label>
+                                                        <select id="STipoPrograma" required="true">
+                                                            <option value="Laboral Docente">Laboral Docente</option>
+                                                            <option value="Laboral Profesional">Laboral Profesional</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>       
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Nombre Institucion</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.nombreinstitucion}" id="Nombreins"   required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Direccion</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.calle}" id="calle"   required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Carrera</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.carrera}" id="carrera" required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Telefono Institucion</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.telefonoinstitucion}" id="telefono"   required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Correo Institucion</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.correoinstitucion}" id="correo"   required="true"></input>
+                                                    </div> 
+                                                </div>
+
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Fecha de nacimiento</label>
+                                                        <input type="text" class=" datepicker" id="fechaini" jsf:value="#{historiallaboralbean.fechaInicio}" required="true"></input>
+                                                    </div> 
+                                                </div>  
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Fecha de nacimiento</label>
+                                                        <input type="text" class=" datepicker" id="fechafin"  jsf:value="#{historiallaboralbean.fechaFin}" required="true" ></input>
+                                                    </div> 
+                                                </div>  
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Nombre Materia dictada</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.nombreasignatura}" id="materia"   required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Horas impartidas</label>
+                                                        <input type="text" class="form-control" jsf:value="#{historiallaboralbean.númerodehoras}"  id="hora"  required="true"></input>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Dedicacion</label>
+                                                        <select id="Sdedicacion" required="true">
+                                                            <option value="Tiempo Completo">Tiempo completo</option>
+                                                            <option value="Medio Tiempo">Medio Tiempo</option>
+                                                            <option value="Cátedra">Cátedra</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>   
+
+                                                <div class="col s4">
+                                                    <div class="form-group">
+                                                        <label>Tipo de institucion</label>
+                                                        <select id="Stipoins" required="true">
+                                                            <option value="Publica">Publica</option>
+                                                            <option value="Privada">Privada</option>
+                                                            <option value="Mixta">Mixta</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <input type="hidden" id="dedicacion" value="#{historiallaboralbean.dedicacion}"></input>
+                                                    <input type="hidden" id="TipoPrograma" value="#{historiallaboralbean.tipo}"></input>
+                                                    <input type="hidden" id="tipoins" value="#{historiallaboralbean.tipoinstitucion}"></input>
+                                                </div>
+                                                <div class="row center-align">
+                                                    <p:commandButton  value="Registrar"
+                                                                      actionListener="#{historiallaboralbean.crear(actionListener)}" />
+                                                </div>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">assignment</i>Actividades</div>
+                            <div class="collapsible-body"><span>
+                                    <div class="row">
+                                        <ul class="collapsible">
+                                            <li>
+                                                <div class="collapsible-header">Actividades de formacion</div>
+                                                <div class="collapsible-body"><span>
+                                                        <div class="row">
+                                                            <h:form>
+                                                                <div class="row">
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Título del trabajo</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesformacionbean.titulotrabajo}"  id="titulotr"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Nombre otro autor</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesformacionbean.nombreautor}"  id="nomotroautor"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Apellido otro autor</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesformacionbean.apellidoautor}" id="apeotroautor"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Fecha Inicio</label>
+                                                                            <input type="text" class=" datepicker" id="fechain" value="#{actividadesformacionbean.fechaInicio}" required="true" ></input>
+                                                                        </div> 
+                                                                    </div>  
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Fecha Finalizacion</label>
+                                                                            <input type="text" class=" datepicker" id="fechafin" value="#{actividadesformacionbean.fechaFin}" required="true" ></input>
+                                                                        </div> 
+                                                                    </div>  
+
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Area Linea Investigacion</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesformacionbean.areainvestigacion}"  id="arealinea"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Nombre Linea Investigacion</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesformacionbean.nombrelinainvestigacion}"  id="nombrelinea"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Descripcion Linea Investigacion</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesformacionbean.descripcionlineainvestigacion}"  id="descripcionlinea"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="row center-align">
+                                                                    <p:commandButton id="loginButton" value="Registrar"
+                                                                                     actionListener="#{actividadesformacionbean.crear(actionListener)}" />
+                                                                </div>
+
+                                                            </h:form>
+                                                        </div>
+                                                    </span></div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">Actividades de evaluador</div>
+                                                <div class="collapsible-body"><span>
+                                                        <div class="row">
+                                                            <h:form>
+                                                                <div class="row">
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Nombre otro autor</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesevaluadorbean.nombreautor}"  id="nomotroautor"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Apellido otro autor</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesevaluadorbean.apellidoautor}" id="apeotroautor"  required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Fecha Finalizacion</label>
+                                                                            <input type="text" class=" datepicker" id="fechain" value="#{actividadesevaluadorbean.fechasustentacion}" required="true" ></input>
+                                                                        </div> 
+                                                                    </div>  
+
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Area Linea Investigacion</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesevaluadorbean.areainvestigacion}"  id="arealinea" required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Nombre Linea Investigacion</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesevaluadorbean.nombrelinainvestigacion}"  id="nombrelinea" required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+                                                                    <div class="col s4">
+                                                                        <div class="form-group">
+                                                                            <label>Descripcion Linea Investigacion</label>
+                                                                            <input type="text" class="form-control" value="#{actividadesevaluadorbean.descripcionlineainvestigacion}"  id="descripcionlinea" required="true"></input>
+                                                                        </div> 
+                                                                    </div>
+
+
+
+
+
+
+                                                                </div>
+                                                                <div class="row center-align">
+                                                                    <p:commandButton id="loginButton" value="Registrar"
+                                                                                     actionListener="#{actividadesevaluadorbean.crear(actionListener)}" 
+                                                                                     />
+
+                                                                </div>
+
+                                                            </h:form>
+                                                        </div>
+                                                    </span></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </span></div>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+
+    </body>
+
+    <footer class="page-footer grey darken-3">
+        <div class="container">
+            <a class="grey-text text-lighten-4 right">INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</a>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        window.addEventListener('load',
+                function () {
+                    M.AutoInit();
+                    $('.datepicker').datepicker({
+                        format: 'dd.mm.yyyy',
+                        i18n: {
+                            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                            weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                            weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                            weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"]
+                        }
+                    });
+                    //document.getElementById("formulario").reset();
+
+                }, false);
+
+
+    </script>
+</html>

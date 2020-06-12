@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ucentral.beans;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -144,6 +143,9 @@ public class investigador implements Serializable {
         I.setWeb(link);
         I.setCorreo(correo);
         I.setTelefono(telefono);
+        I.setIdDireccion(D);
+        I.setIdLibretamilitar(L);
+        I.setIdNacionalidad(N);
 
         investigadorfade.create(I);
         //System.out.println("Funcionaaa! :)");

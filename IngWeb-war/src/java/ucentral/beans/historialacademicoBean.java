@@ -7,75 +7,79 @@ package ucentral.beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionListener;
+import javax.inject.Named;
 import ucentral.entities.TbDireccion;
 import ucentral.entities.TbInstitucion;
 import ucentral.entities.TbInstitucionprograma;
 import ucentral.entities.TbInvestigadorPrograma;
+import ucentral.entities.TbJurado;
 import ucentral.entities.TbPrograma;
+import ucentral.entities.TbTesis;
 import ucentral.entities.TbTipoprograma;
 import ucentral.sessionbean.TbDireccionFacadeLocal;
 import ucentral.sessionbean.TbInstitucionFacadeLocal;
-import ucentral.sessionbean.TbInstitucionprogramaFacade;
 import ucentral.sessionbean.TbInstitucionprogramaFacadeLocal;
-import ucentral.sessionbean.TbInvestigadorProgramaFacade;
 import ucentral.sessionbean.TbInvestigadorProgramaFacadeLocal;
+import ucentral.sessionbean.TbJuradoFacadeLocal;
 import ucentral.sessionbean.TbProgramaFacadeLocal;
-import ucentral.sessionbean.TbTipoprogramaFacade;
+import ucentral.sessionbean.TbTesisFacadeLocal;
 import ucentral.sessionbean.TbTipoprogramaFacadeLocal;
 
 /**
  *
  * @author GUTIERREZ
  */
-@Named(value = "historialacademicoBean")
+@Named(value = "historialacademicoBe")
 @SessionScoped
 public class historialacademicoBean implements Serializable {
 
     @EJB
     private TbTipoprogramaFacadeLocal tipoprogramafacade;
-    
-    private String tipoprograma;
-
-    /*
-    @EJB
-    private TbInvestigadorProgramaFacadeLocal programainvestigador;
-    
-    private String idInvProg;
-     */
- /*
     @EJB
     private TbProgramaFacadeLocal programafacade;
-     */
- /*
-    
+    @EJB
+    private TbInstitucionprogramaFacadeLocal institucionprofacade;
+    @EJB
+    private TbInvestigadorProgramaFacadeLocal programainvestigador;
     @EJB
     private TbInstitucionFacadeLocal institucionfacade;
     @EJB
-    private TbInstitucionprogramaFacadeLocal institucionprofacade;
-    
-    @EJB
     private TbDireccionFacadeLocal direccionfacade;
+    @EJB
+    private TbTesisFacadeLocal tesisfacade;
+    @EJB
+    private TbJuradoFacadeLocal juradofacade;
 
+    /*
+    
+    
+    private String idInvProg;
+     */
+    private String tipoprograma;
     private Date fechaInicio;
     private Date fechaFin;
-    //private double promediocademico;
-     */
- /*
-    private String nombre;
-   
+    private double promediocademico;
     private String numerosemestres;
-    private Double promediocademico;
+    private String nombrepre;
     private String nombreinstitucion;
     private String telefonoinstitucion;
     private String correoinstitucion;
     private String resolucioninstitucion;
     private String tipoinstitucion;
-    
+    private String carrera;
+    private String calle;
+    private String emailjurado;
+    private String nombrejurado;
+    private String titulotesis;
+    private String lineainvestigacion;
+    private String descripciontesis;
+
+
+    /*
     private String carrera;
     private String calle;
      */
@@ -88,78 +92,199 @@ public class historialacademicoBean implements Serializable {
 
     public void crear(ActionListener actionListener) {
 
-        /*
-        TbInvestigadorPrograma I = new TbInvestigadorPrograma();
-        Long idInvProg = Long.valueOf(programainvestigador.ultimoRegistropro());
-        I.setIdInvProg(idInvProg);
-        System.out.println(idInvProg);
-         */
- /*
-        I.setFechaInicio(fechaInicio);
-        System.out.println(fechaInicio);
-        
-        I.setFechaFin(fechaFin);
-         System.out.println(fechaFin);
-        programainvestigador.create(I);
-         */
- /*
-        TbInstitucion I = new TbInstitucion();
-        Long id_institucion = Long.valueOf(institucionfacade.ultimoRegistro());
-        I.setIdInstitucion(id_institucion);
-        System.out.println("id_institucion");
-        System.out.println(id_institucion);
-        I.setNombre(nombreinstitucion);
-        I.setCorreo(correoinstitucion);
-        I.setNumeroResolucion(Integer.parseInt(resolucioninstitucion));
-        I.setTelefono(telefonoinstitucion);
-        I.setTipo(tipoinstitucion);
-        institucionfacade.create(I);
-        
+        TbPrograma C = new TbPrograma();
+        Long id_programa = Long.valueOf(programafacade.ultimoRegistro());
+        C.setIdPrograma(id_programa);
+        System.out.println(id_programa);
+        C.setNombre(nombrepre);
+
+        programafacade.create(C);
+
+        TbTipoprograma T = new TbTipoprograma();
+        Long id_tipopro = Long.valueOf(tipoprogramafacade.ultimoRegistro());
+        T.setIdTipoprograma(id_tipopro);
+        T.setNombre(tipoprograma);
+        tipoprogramafacade.create(T);
+
+        TbInstitucionprograma I = new TbInstitucionprograma();
+        Long id_instipro = Long.valueOf(institucionprofacade.ultimoRegistro());
+        I.setIdInstitucionprograma(id_instipro);
+        I.setNumerosemestre(Integer.parseInt(numerosemestres));
+
+        institucionprofacade.create(I);
+
+        TbInvestigadorPrograma P = new TbInvestigadorPrograma();
+        Long id_inpro = Long.valueOf(programainvestigador.ultimoRegistropro());
+        P.setIdInvProg(id_inpro);
+        P.setFechaInicio(fechaInicio);
+        P.setFechaFin(fechaFin);
+        P.setPromedioAcademico(promediocademico);
+
+        programainvestigador.create(P);
+
+        TbInstitucion R = new TbInstitucion();
+        Long id_ins = Long.valueOf(institucionfacade.ultimoRegistro());
+        R.setIdInstitucion(id_ins);
+        R.setNombre(nombreinstitucion);
+        R.setCorreo(correoinstitucion);
+        R.setNumeroResolucion(Long.parseLong(resolucioninstitucion));
+        R.setTelefono(telefonoinstitucion);
+        R.setTipo(tipoinstitucion);
+
+        institucionfacade.create(R);
+
         TbDireccion D = new TbDireccion();
         Long id_direccion = Long.valueOf(direccionfacade.ultimoRegistro());
         D.setIdDireccion(id_direccion);
         D.setCarrera(carrera);
         D.setCalle(calle);
+
         direccionfacade.create(D);
+
+        TbJurado J = new TbJurado();
+        Long id_jurado = Long.valueOf(juradofacade.ultimoRegistro());
+        J.setIdJurado(id_jurado);
+        J.setNombre(nombrejurado);
+        J.setEmail(emailjurado);
         
+        juradofacade.create(J);
         
+        TbTesis Tesis = new TbTesis();
+        Long id_tesis = Long.valueOf(tesisfacade.ultimoRegistro());
+        Tesis.setIdTesis(id_tesis);
+        Tesis.setTitulo(titulotesis);
+        Tesis.setNombreLinea(lineainvestigacion);
+        Tesis.setDescripcion(descripciontesis);
         
-        TbInstitucionprograma O = new TbInstitucionprograma();
-        Long id_institucionpro = Long.valueOf(institucionprofacade.ultimoRegistro());
-        O.setIdInstitucionprograma(id_institucionpro);
-        System.out.println("id_institucionpro");
-        System.out.println(id_institucionpro);
-       
-        O.setNumerosemestre(Integer.parseInt(numerosemestres));
-        
-        institucionprofacade.create(O);
-        
-        TbPrograma C = new TbPrograma();
-        Long id_programa = Long.valueOf(programafacade.ultimoRegistro());
-        C.setIdPrograma(id_programa);
-        System.out.println("id_programa");
-        System.out.println(id_programa);
-        
-        C.setNombre(nombre);
-        
-        programafacade.create(C);
-        
-        
-        
-         */
-        TbTipoprograma T = new TbTipoprograma();
-        Long id_tipoprograma = Long.valueOf(tipoprogramafacade.ultimoRegistro());
-        T.setIdTipoprograma(id_tipoprograma);
-        System.out.println(id_tipoprograma);
-        System.out.println(tipoprograma);
-        //T.setNombre(tipoprograma);
-        //tipoprogramafacade.create(T);
-        /*
-        System.out.println("id_tipoprograma");
-        System.out.println(id_tipoprograma);
-        
-        
-         */
+        tesisfacade.create(Tesis);
+    }
+
+    public String getEmailjurado() {
+        return emailjurado;
+    }
+
+    public void setEmailjurado(String emailjurado) {
+        this.emailjurado = emailjurado;
+    }
+
+    public String getNombrejurado() {
+        return nombrejurado;
+    }
+
+    public void setNombrejurado(String nombrejurado) {
+        this.nombrejurado = nombrejurado;
+    }
+
+    public String getTitulotesis() {
+        return titulotesis;
+    }
+
+    public void setTitulotesis(String titulotesis) {
+        this.titulotesis = titulotesis;
+    }
+
+    public String getLineainvestigacion() {
+        return lineainvestigacion;
+    }
+
+    public void setLineainvestigacion(String lineainvestigacion) {
+        this.lineainvestigacion = lineainvestigacion;
+    }
+
+    public String getDescripciontesis() {
+        return descripciontesis;
+    }
+
+    public void setDescripciontesis(String descripciontesis) {
+        this.descripciontesis = descripciontesis;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getNombreinstitucion() {
+        return nombreinstitucion;
+    }
+
+    public void setNombreinstitucion(String nombreinstitucion) {
+        this.nombreinstitucion = nombreinstitucion;
+    }
+
+    public String getTelefonoinstitucion() {
+        return telefonoinstitucion;
+    }
+
+    public void setTelefonoinstitucion(String telefonoinstitucion) {
+        this.telefonoinstitucion = telefonoinstitucion;
+    }
+
+    public String getCorreoinstitucion() {
+        return correoinstitucion;
+    }
+
+    public void setCorreoinstitucion(String correoinstitucion) {
+        this.correoinstitucion = correoinstitucion;
+    }
+
+    public String getResolucioninstitucion() {
+        return resolucioninstitucion;
+    }
+
+    public void setResolucioninstitucion(String resolucioninstitucion) {
+        this.resolucioninstitucion = resolucioninstitucion;
+    }
+
+    public String getTipoinstitucion() {
+        return tipoinstitucion;
+    }
+
+    public void setTipoinstitucion(String tipoinstitucion) {
+        this.tipoinstitucion = tipoinstitucion;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public double getPromediocademico() {
+        return promediocademico;
+    }
+
+    public void setPromediocademico(double promediocademico) {
+        this.promediocademico = promediocademico;
+    }
+
+    public String getNumerosemestres() {
+        return numerosemestres;
+    }
+
+    public void setNumerosemestres(String numerosemestres) {
+        this.numerosemestres = numerosemestres;
     }
 
     public String getTipoprograma() {
@@ -169,7 +294,13 @@ public class historialacademicoBean implements Serializable {
     public void setTipoprograma(String tipoprograma) {
         this.tipoprograma = tipoprograma;
     }
-    
 
+    public String getNombrepre() {
+        return nombrepre;
+    }
+
+    public void setNombrepre(String nombrepre) {
+        this.nombrepre = nombrepre;
+    }
 
 }

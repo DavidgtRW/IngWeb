@@ -30,4 +30,6 @@ public interface TbActividadesformFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }

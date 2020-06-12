@@ -30,4 +30,6 @@ public interface TbArticulospublicadosFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }

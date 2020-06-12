@@ -30,4 +30,5 @@ public interface TbAutoresProdbibFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
 }
