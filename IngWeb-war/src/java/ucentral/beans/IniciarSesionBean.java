@@ -47,33 +47,15 @@ public class IniciarSesionBean implements Serializable {
         System.out.println("validateUsernamePassword");
         if (!result) {
 
-            // get Http Session and store username
             HttpSession session = Util.getSession();
             session.setAttribute("usuario", usuario);
-            /*
-            String tipoUsuarios = usuario.getTipoUsuario();
-            switch (tipoUsuarios) {
-                case Usuario.TIPO_ADMIN:
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                            "Login!",
-                            "Admin"));
-                    return tipoUsuarios;
-                case Usuario.TIPO_PROFE:
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                            "Login!",
-                            "Profesor"));
-                    return tipoUsuarios;
-                case Usuario.TIPO_ESTUDIANTE:
-                    return cambioDeRuta(usuario);
-                default:
-                    return "NO EXISTE ESE USUARIO";
-            }*/
+
             if (usuario.getNombre().equals("admin")) {
                 return "admin";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                        "Invalid Login!",
-                        "Please Try Again!"));
+                        "Usuario inactivo o incorrecto!",
+                        "Intente de nuevo!"));
 
                 // invalidate session, and redirect to other pages
                 //message = "Invalid Login. Please Try Again!";
@@ -83,8 +65,8 @@ public class IniciarSesionBean implements Serializable {
             }
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Invalid Login!",
-                    "Please Try Again!"));
+                    "Usuario inactivo o incorrecto!",
+                    "Intente de nuevo!"));
 
             // invalidate session, and redirect to other pages
             //message = "Invalid Login. Please Try Again!";

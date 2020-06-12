@@ -16,31 +16,13 @@
             <div id="menu" class="container" align="center">
                 <ul>
                     <p:megaMenu style="margin-top:20px" styleClass="megaMenu">
-                        <p:submenu label="Administrador" icon="pi pi-check">
+                        <p:submenu label="#{pantallaPrincipalInvestigadorBean.investigador.nombre}" icon="pi pi-check">
                             <p:column>
                                 <p:submenu label="Control">
                                     <p:menuitem value="Principal" url="#" />
-                                    <p:menuitem value="Ver administradores" url="#" />
-                                    <p:menuitem value="Registrar nuevo Administrador" url="#" />
+                                    <p:menuitem value="Ver informacion personal" url="#" />
                                 </p:submenu>
                             </p:column>                                   
-                        </p:submenu>
-
-                        <p:submenu label="Investigadores" icon="pi pi-file">
-                            <p:column>
-                                <p:submenu label="Control">
-                                    <p:menuitem value="Ver Investigadores" outcome="administradorTablaInvestigadores"/>
-                                </p:submenu>
-                            </p:column>
-                        </p:submenu>
-
-                        <p:submenu label="Configuracion" icon="pi pi-pencil">
-
-                            <p:column>
-                                <p:submenu label="Control">
-                                    <p:menuitem value="Configuracion" url="#" />
-                                </p:submenu>
-                            </p:column>
                         </p:submenu>
 
                         <p:menuitem value="Salir" outcome="inicio" icon="pi pi-times" />
@@ -48,7 +30,12 @@
                 </ul>
             </div>
         </div>
-        
+
+
+        <h:form id="formAdministradores" >
+            <p:commandButton id="loginButton" value="Crear"
+                             actionListener="#{pantallaPrincipalInvestigadorBean.inicializar(actionEvent)}"/>
+        </h:form>
 
         <div id="copyright" class="container">
             <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>

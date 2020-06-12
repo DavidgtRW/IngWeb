@@ -39,7 +39,7 @@
 
 
                         <h:outputLabel for="correo" value="Correo:" />
-                        <p:inputText value="#{registroInvestigadorBean.segundoApellido}" id="correo" required="true"
+                        <p:inputText value="#{registroInvestigadorBean.correo}" id="correo" required="true"
                                      label="correo" />
 
                         <h:outputLabel for="correo2" value="Tipo documento:" />
@@ -55,7 +55,7 @@
                                      label="contraseña" />
                         <f:facet name="footer">
                             <p:commandButton id="loginButton" value="Crear"
-                                             action="#{registroInvestigadorBean.crearUsuarioInvestigador()}" update=":mensajes" 
+                                             action="#{registroInvestigadorBean.crearUsuarioInvestigador()}"
                                              oncomplete="manejarLogin(xhr, status, args)" />
                         </f:facet>
 
@@ -69,6 +69,14 @@
             </p:panel>
 
         </div>
+
+        <br/>
+        <br/>
+        <br/>
+        
+        <div id="copyright" class="container">
+            <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
+        </div>
     </h:body>
     <script type="text/javascript">
         //<![CDATA[
@@ -81,9 +89,6 @@
         }
         //]]>
     </script>
-    <br/>
-    <div id="copyright" class="container">
-        <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
-    </div>
+
 </html>
 

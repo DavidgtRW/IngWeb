@@ -34,4 +34,8 @@ public interface TbInvestigadorFacadeLocal {
     
     void modificar(TbInvestigador tbInvestigador);
     
+    List<TbInvestigador> getInvestigadores();
+    
+    TbInvestigador findByUsuario(Long id);
+    
 }

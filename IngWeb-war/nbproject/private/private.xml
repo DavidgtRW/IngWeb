@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/src/java/ucentral/beans/UsuarioBean.java</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/pantallaPrincipalAdministrador.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/resources/css/default.css</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/index.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/newTemplate.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/registrarInvestigador.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/src/java/ucentral/beans/historialacademicoBean.java</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/WEB-INF/faces-config.xml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/src/java/ucentral/beans/IniciarSesionBean.java</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/administradorTablaInvestigadores.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/src/java/ucentral/beans/RegistroInvestigadorBean.java</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/Templates/newTemplate.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/src/java/ucentral/beans/AdministradorTablaInvestigadoresBean.java</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/src/java/ucentral/beans/investigador.java</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/inicio.xhtml</file>
+            <file>file:/C:/Users/david/Documents/NetBeansProjectsRC/IngWeb/IngWeb-war/web/indexAdmin.xhtml</file>
+        </group>
     </open-files>
 </project-private>

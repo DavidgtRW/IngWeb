@@ -5,6 +5,7 @@
  */
 package ucentral.sessionbean;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -60,6 +61,28 @@ public class TbInvestigadorFacade extends AbstractFacade<TbInvestigador> impleme
         
         System.out.println("MARCA2:"+query);
         query.executeUpdate();
+    }
+
+    @Override
+    public List<TbInvestigador> getInvestigadores() {
+        Query query = em.createNativeQuery("SELECT id_investigador, correo, edad, fecha_inscripcion, fecha_nacimiento, "
+                + "foto, genero, hoja_vida, no_documento, nombre, primer_apellido, segundo_apellido, "
+                + "telefono, tipo_documento, web, id_direccion, id_libretamilitar, id_nacionalidad, id_usuario FROM public.tb_investigador", TbInvestigador.class);
+        
+        System.out.println("Query:"+query);
+        return query.getResultList();
+    }
+
+    @Override
+    public TbInvestigador findByUsuario(Long id) {
+        Query query = em.createNativeQuery("SELECT id_investigador, correo, edad, fecha_inscripcion, fecha_nacimiento, "
+                + "foto, genero, hoja_vida, no_documento, nombre, primer_apellido, segundo_apellido, "
+                + "telefono, tipo_documento, web, id_direccion, id_libretamilitar, id_nacionalidad, id_usuario FROM public.tb_investigador"
+                + " WHERE id_usuario ="+id, TbInvestigador.class);
+        
+        System.out.println("Query:"+query);
+        
+        return (TbInvestigador) query.getSingleResult();
     }
 
 }
