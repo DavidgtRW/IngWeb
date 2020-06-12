@@ -1,0 +1,15 @@
+
+build/
+
+IngWeb-war/nbproject/private/
+
+IngWeb-war/dist/
+
+IngWeb-war/build/
+*.class
+
+dist/gfdeploy/IngWeb/IngWeb-war_war/
+
+dist/gfdeploy/IngWeb/IngWeb-ejb_jar/ucentral/entities/
+
+dist/gfdeploy/IngWeb/IngWeb-ejb_jar/ucentral/sessionbean/
