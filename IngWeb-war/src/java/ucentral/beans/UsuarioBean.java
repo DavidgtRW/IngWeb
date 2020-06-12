@@ -64,32 +64,6 @@ public class UsuarioBean implements Serializable {
     public List<TbUsuario> getUsuarios() {
         return tbUsuarioFacadeLocal.findAll();
     }
-
-    public void crear() {
-        try {
-            /*
-            TbUsuario usuario = new TbUsuario();
-            Long id = Long.valueOf(tbUsuarioFacadeLocal.ultimoRegistro());
-            usuario.setIdUsuario(id);
-            usuario.setNombre(nombreUsuario);
-            usuario.setContrasena(contrasena);
-            usuario.setEstado(estado);
-            tbUsuarioFacadeLocal.create(usuario);
-            */
-            TbUsuario usuario = new TbUsuario();
-            Long id = Long.valueOf(tbUsuarioFacadeLocal.ultimoRegistro());
-            usuario.setIdUsuario(id);
-            usuario.setNombre("PRB");
-            usuario.setContrasena("PRB");
-            usuario.setEstado("PRB");
-            System.out.println("MARCA");
-            tbUsuarioFacadeLocal.create(usuario);
-        } catch (Exception e) {
-            System.out.println("Error creando usuario"+e);
-        }
-
-    }
-
     
     public String validateUsernamePassword() {
         TbUsuario usuario = tbUsuarioFacadeLocal.findByCredenciales(nombreUsuario, contrasena);
@@ -100,29 +74,12 @@ public class UsuarioBean implements Serializable {
             // get Http Session and store username
             HttpSession session = Util.getSession();
             session.setAttribute("usuario", usuario);
-            /*
-            String tipoUsuarios = usuario.getTipoUsuario();
-            switch (tipoUsuarios) {
-                case Usuario.TIPO_ADMIN:
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                            "Login!",
-                            "Admin"));
-                    return tipoUsuarios;
-                case Usuario.TIPO_PROFE:
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                            "Login!",
-                            "Profesor"));
-                    return tipoUsuarios;
-                case Usuario.TIPO_ESTUDIANTE:
-                    return cambioDeRuta(usuario);
-                default:
-                    return "NO EXISTE ESE USUARIO";
-            }*/
-            return "succes";
+            
+            return "investigador";
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Invalid Login!",
-                    "Please Try Again!"));
+                    "Usuario inactivo o incorrecto!",
+                    "Intente de nuevo!"));
 
             // invalidate session, and redirect to other pages
             //message = "Invalid Login. Please Try Again!";

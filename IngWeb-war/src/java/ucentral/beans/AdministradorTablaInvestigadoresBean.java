@@ -14,8 +14,12 @@ import javax.ejb.EJB;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 import ucentral.entities.TbInvestigador;
+import ucentral.entities.TbUsuario;
+import ucentral.sessionbean.TbInvestigadorFacade;
 import ucentral.sessionbean.TbInvestigadorFacadeLocal;
+import ucentral.utils.Util;
 
 /**
  *
@@ -57,17 +61,29 @@ public class AdministradorTablaInvestigadoresBean implements Serializable {
         visiblePanelModificar = false;
         tblInvestigador = new TbInvestigador();
         llenarEstados();
+        HttpSession session = Util.getSession();
+        TbUsuario usuario = (TbUsuario) session.getAttribute("usuario");
+        System.out.println("USUARIO: "+usuario.getNombre());
 
     }
 
     public List<TbInvestigador> getLstTablaInvestigador() {
         lstTablaInvestigador = new ArrayList<>();
-        lstTablaInvestigador = tbInvestigadorFacadeLocal.findAll();
+        lstTablaInvestigador = tbInvestigadorFacadeLocal.getInvestigadores();
         return lstTablaInvestigador;
     }
     
-    public void actualizar(ActionEvent actionEvent) {
-        lstTablaInvestigador = tbInvestigadorFacadeLocal.findAll();
+    public String actualizar() {
+        System.out.println("INICIO actualizar");
+        
+        inicializar();
+        this.setLstTablaInvestigador(tbInvestigadorFacadeLocal.getInvestigadores());
+        for(TbInvestigador tblInvestigadorAux: this.getLstTablaInvestigador()){
+            System.out.println("MARCA Id: "+tblInvestigadorAux.getIdInvestigador());
+            System.out.println("MARCA Id: "+tblInvestigadorAux.getIdUsuario().getIdUsuario());
+            System.out.println("MARCA Estadu: "+tblInvestigadorAux.getIdUsuario().getEstado());
+        }
+        return "actualizar";
     }
 
     private void llenarEstados() {
@@ -97,7 +113,7 @@ public class AdministradorTablaInvestigadoresBean implements Serializable {
         visiblePanelModificar = true;
     }
 
-    public void modificar(ActionEvent actionEvent) {
+    public String modificar() {
         
         System.out.println("MARCA5");
         tblInvestigador.setNombre(nombre);
@@ -108,9 +124,11 @@ public class AdministradorTablaInvestigadoresBean implements Serializable {
 
         tbInvestigadorFacadeLocal.modificar(tblInvestigador);
         
-        lstTablaInvestigador = tbInvestigadorFacadeLocal.findAll();
+        lstTablaInvestigador = tbInvestigadorFacadeLocal.getInvestigadores();
         
         visiblePanelModificar = false;
+        
+        return "confirmar";
 
     }
 
@@ -178,5 +196,23 @@ public class AdministradorTablaInvestigadoresBean implements Serializable {
     public void setSegundoApellido(String segundoApellido) {
         this.segundoApellido = segundoApellido;
     }
+
+    public TbInvestigadorFacadeLocal getTbInvestigadorFacadeLocal() {
+        return tbInvestigadorFacadeLocal;
+    }
+
+    public void setTbInvestigadorFacadeLocal(TbInvestigadorFacadeLocal tbInvestigadorFacadeLocal) {
+        this.tbInvestigadorFacadeLocal = tbInvestigadorFacadeLocal;
+    }
+
+    public TbInvestigador getTblInvestigador() {
+        return tblInvestigador;
+    }
+
+    public void setTblInvestigador(TbInvestigador tblInvestigador) {
+        this.tblInvestigador = tblInvestigador;
+    }
+    
+    
 
 }

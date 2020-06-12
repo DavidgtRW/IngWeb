@@ -11,6 +11,11 @@
             <from-outcome>Registrar</from-outcome>
             <to-view-id>/registrarInvestigador.xhtml</to-view-id>
         </navigation-case>     
+        
+        <navigation-case>
+            <from-outcome>investigador</from-outcome>
+            <to-view-id>/pantallaPrincipalInvestigador.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
@@ -28,5 +33,38 @@
             <to-view-id>/pantallaPrincipalAdministrador.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/administradorTablaInvestigadores.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>confirmar</from-outcome>
+            <to-view-id>/confirmarActualizarPantalla.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/confirmarActualizarPantalla.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>actualizar</from-outcome>
+            <to-view-id>/administradorTablaInvestigadores.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/confirmarCreacionUsuario.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ingresar</from-outcome>
+            <to-view-id>/inicio.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/registrarInvestigador.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>activar</from-outcome>
+            <to-view-id>/confirmarCreacionUsuario.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 
 </faces-config>

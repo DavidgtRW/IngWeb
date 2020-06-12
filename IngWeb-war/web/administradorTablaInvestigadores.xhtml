@@ -74,13 +74,6 @@
 
                         </p:dataTable>
 
-                        <p:column headerText="Editar">
-                            <p:commandButton value="Actualizar" update=":formAdministradores:tblMod" style="width: 100%"
-                                             actionListener="#{administradorTablaInvestigadoresBean.actualizar(actionEvent)}">
-                            </p:commandButton>
-                        </p:column>
-
-
                     </p:panel>
 
                     <p:panel rendered="#{administradorTablaInvestigadoresBean.visiblePanelModificar}">
@@ -105,8 +98,8 @@
                                 <f:selectItems value="#{administradorTablaInvestigadoresBean.estados}"/>
                             </p:selectOneMenu>
                             <div align="center">
-                                <p:commandButton value="Confirmar" update=":formAdministradores:tblMod" style="width: 100%"
-                                                 actionListener="#{administradorTablaInvestigadoresBean.modificar(actionEvent)}">
+                                <p:commandButton value="Confirmar" update=":formAdministradores" style="width: 100%"
+                                                 action="#{administradorTablaInvestigadoresBean.modificar()}">
                                 </p:commandButton>
                             </div>
                         </h:panelGrid>
