@@ -30,4 +30,7 @@ public interface TbLineainvestigacionFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
+    
 }

@@ -29,5 +29,7 @@ public interface TbJuradoFacadeLocal {
     List<TbJurado> findRange(int[] range);
 
     int count();
-    
+
+    int ultimoRegistro();
+
 }

@@ -8,6 +8,7 @@ package ucentral.sessionbean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import ucentral.entities.TbArticulospublicados;
 
 /**
@@ -27,6 +28,19 @@ public class TbArticulospublicadosFacade extends AbstractFacade<TbArticulospubli
 
     public TbArticulospublicadosFacade() {
         super(TbArticulospublicados.class);
+    }
+
+    @Override
+    public int ultimoRegistro() {
+        Query query = em.createNativeQuery("SELECT max(id_articulospub) FROM public.tb_articulospublicados");
+        int valor = 1;
+        if(query.getSingleResult()==null){
+            return valor;
+        }else{
+            valor = ((Long) query.getSingleResult()).intValue() + 1;
+        }
+            
+        return valor;
     }
     
 }

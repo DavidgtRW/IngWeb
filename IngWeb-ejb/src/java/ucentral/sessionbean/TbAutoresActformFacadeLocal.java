@@ -30,4 +30,5 @@ public interface TbAutoresActformFacadeLocal {
 
     int count();
     
+     int ultimoRegistro();
 }

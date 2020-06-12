@@ -30,4 +30,6 @@ public interface TbAsignaturasimpartidasFacadeLocal {
 
     int count();
     
+    int ultimoRegistro();
+    
 }

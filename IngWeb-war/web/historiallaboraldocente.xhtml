@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+
+        
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+
+                    <h:form>
+                        <p:growl>
+                            <p:autoUpdate />
+                        </p:growl>
+
+                        <p:panelMenu style="width:300px">
+                            <p:submenu label="Formulario">
+                               <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Formulario" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:submenu label="Historial academico">
+                                <p:menuitem value="Especialización" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
+                                <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:submenu label="Historial Laboral">
+                               <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Actividades">
+                                <p:menuitem value="Registro Actividades de formacion" outcome="actividadesformacion"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Actividades de evaluador" outcome="actividadesevaluador"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Actividades" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Produccion">
+                                <p:menuitem value="Registro Produccion bibliografica" outcome="produccionesbibliograficas"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Produccion Técnica o Arte" outcome="produccionTA"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Produccion" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Articulos">
+                                <p:menuitem value="Registro Articulos publicados" outcome="articulospublicados"  ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Actualizacion Articulos publicados" action="#{menuView.update}" icon="pi pi-times"/>
+                            </p:submenu>
+                            <p:menuitem value="Mobile" icon="pi pi-mobile" />
+
+                        </p:panelMenu>
+                    </h:form>
+
+                </ui:insert>
+            </div>
+
+
+
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:body style="text-align:center">
+                        <div align="center">
+                            <p:growl id="mensajes" showDetail="true" life="2000" />
+
+                            <p:panel header="Informacion Laboral" style="width:1000px">
+                                <h:form id="formulario">
+
+                                    <script type="text/javascript">
+                                        function limpiarForm()
+                                        {
+                                            document.getElementById("historialAcademico").reset();
+                                        }
+                                    </script>
+
+                                    <h:panelGrid columns="4" cellpadding="10" >
+
+                                        <p:outputLabel for="@next" value="Tipo de Programa" />
+                                        <p:selectOneMenu id="console" value="#{historiallaboralbean.tipo}"  style="width:200px">
+                                            <f:selectItem itemLabel="Laboral Docente" itemValue="Laboral Docente"/>
+                                            <f:selectItem itemLabel="Laboral Profesional" itemValue="Laboral Profesional"/>
+                                        </p:selectOneMenu>
+
+                                        <h:outputLabel for="Nombreins" value="Nombre Institucion" />
+                                        <p:inputText  value="#{historiallaboralbean.nombreinstitucion}" id="Nombreins"  required="true"
+                                                      label="Nombreins" />
+
+                                        <h:outputLabel for="calle" value="Direccion: Calle:" />
+                                        <p:inputText  value="#{historiallaboralbean.calle}" id="calle" required="true"
+                                                      label="calle" />
+
+                                        <h:outputLabel for="carrera" value="Carrera:" />
+                                        <p:inputText  value="#{historiallaboralbean.carrera}" id="carrera" required="true"
+                                                      label="carrera" />  
+
+                                        <h:outputLabel for="telefono" value="Telefono Institucion" />
+                                        <p:inputText  value="#{historiallaboralbean.telefonoinstitucion}" id="telefono" required="true"
+                                                      label="telefono" />
+
+                                        <h:outputLabel for="correo" value="Correo Institucion" />
+                                        <p:inputText  value="#{historiallaboralbean.correoinstitucion}" id="correo" required="true"
+                                                      label="correo" />
+
+                                        <p:outputLabel for="fechaini" value="Fecha de Inicio" />
+                                        <p:datePicker id="fechaini" value="#{historiallaboralbean.fechaInicio}"
+                                                      locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
+
+                                        <p:outputLabel for="fechafin" value="Fecha Finalizacion" />
+                                        <p:datePicker id="fechafin"  value="#{historiallaboralbean.fechaFin}"
+                                                      locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
+
+                                        <h:outputLabel for="materia" value="Nombre Materia dictada" />
+                                        <p:inputText  value="#{historiallaboralbean.nombreasignatura}" id="materia" required="true"
+                                                      label="materia" />
+
+                                        <h:outputLabel for="hora" value="Horas impartidas" />
+                                        <p:inputText  value="#{historiallaboralbean.númerodehoras}"  id="hora" required="true"
+                                                      label="hora" />
+
+                                        <p:outputLabel for="@next" value="Dedicacion" />
+                                        <p:selectOneMenu id="console1" value="#{historiallaboralbean.dedicacion}"  style="width:200px">
+                                            <f:selectItem itemLabel="Tiempo Completo" itemValue="Tiempo completo"/>
+                                            <f:selectItem itemLabel="Medio Tiempo" itemValue="Medio Tiempo"/>
+                                            <f:selectItem itemLabel="Cátedra" itemValue="Catedra"/>
+                                        </p:selectOneMenu>
+
+                                        <p:outputLabel for="@next" value="Tipo de institucion:" />
+                                        <p:selectOneMenu id="tipoins" value="#{historiallaboralbean.tipoinstitucion}"  style="width:200px">
+                                            <f:selectItem itemLabel="Publica" itemValue="Publica"/>
+                                            <f:selectItem itemLabel="Privada" itemValue="Privada"/>
+                                            <f:selectItem itemLabel="Mixta" itemValue="Mixta"/>
+                                        </p:selectOneMenu>
+
+                                        
+
+
+
+
+                                        <f:facet name="footer">
+                                            <p:commandButton id="loginButton" value="Registrar"
+                                                             actionListener="#{historiallaboralbean.crear(actionListener)}" 
+                                                             update=":mensajes" 
+                                                             oncomplete="limpiarForm()"/>
+                                        </f:facet>
+                                        <br/><br/>
+                                    </h:panelGrid>
+                                </h:form>
+                                <hr></hr>
+                            </p:panel>
+                        </div>
+                    </h:body>
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+
+    <div id="copyright" class="container">
+        <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
+    </div>
+
+
+</html>

@@ -29,5 +29,6 @@ public interface TbAutoresArtpublFacadeLocal {
     List<TbAutoresArtpubl> findRange(int[] range);
 
     int count();
-    
+
+    int ultimoRegistro();
 }
