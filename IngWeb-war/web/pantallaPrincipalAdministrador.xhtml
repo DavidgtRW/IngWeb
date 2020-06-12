@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Consola Administracion</title>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    </h:head>
+
+    <br/>
+    <br/>
+    <h:body style="text-align:center">
+        <div id="header">
+            <div id="menu" class="container" align="center">
+                <ul>
+                    <p:megaMenu style="margin-top:20px" styleClass="megaMenu">
+                        <p:submenu label="Administrador" icon="pi pi-check">
+                            <p:column>
+                                <p:submenu label="Control">
+                                    <p:menuitem value="Principal" url="#" />
+                                    <p:menuitem value="Ver administradores" url="#" />
+                                    <p:menuitem value="Registrar nuevo Administrador" url="#" />
+                                </p:submenu>
+                            </p:column>                                   
+                        </p:submenu>
+
+                        <p:submenu label="Investigadores" icon="pi pi-file">
+                            <p:column>
+                                <p:submenu label="Control">
+                                    <p:menuitem value="Ver Investigadores" outcome="administradorTablaInvestigadores"/>
+                                </p:submenu>
+                            </p:column>
+                        </p:submenu>
+
+                        <p:submenu label="Configuracion" icon="pi pi-pencil">
+
+                            <p:column>
+                                <p:submenu label="Control">
+                                    <p:menuitem value="Configuracion" url="#" />
+                                </p:submenu>
+                            </p:column>
+                        </p:submenu>
+
+                        <p:menuitem value="Salir" outcome="index" icon="pi pi-times" />
+                    </p:megaMenu>
+                </ul>
+            </div>
+        </div>
+        HELLO WORLD!
+
+        <div id="copyright" class="container">
+            <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
+        </div>
+    </h:body>
+
+
+
+
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function manejarLogin(xhr, status, args) {
+            if (!args.validationFailed && args.estaLogeado) {
+                setTimeout(function () {
+                    window.location = args.view;
+                }, 500);
+            }
+        }
+        //]]>
+    </script>
+
+
+
+</html>
+

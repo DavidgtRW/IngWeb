@@ -29,18 +29,37 @@ public class TbInvestigadorFacade extends AbstractFacade<TbInvestigador> impleme
     public TbInvestigadorFacade() {
         super(TbInvestigador.class);
     }
-    
-     @Override
+
+    @Override
     public int ultimoRegistro() {
         Query query = em.createNativeQuery("SELECT max(id_investigador) FROM public.tb_investigador");
         int valor = 1;
-        if(query.getSingleResult()==null){
+        if (query.getSingleResult() == null) {
             return valor;
-        }else{
+        } else {
             valor = ((Long) query.getSingleResult()).intValue() + 1;
         }
-            
+
         return valor;
     }
-    
+
+    @Override
+    public void modificar(TbInvestigador tbInvestigador) {
+        Query query = em.createNativeQuery("UPDATE public.tb_investigador "
+                + " SET correo='" + tbInvestigador.getCorreo() + "', edad=" + tbInvestigador.getEdad() + ", genero='" + tbInvestigador.getGenero() + "',"
+                + " no_documento=" + tbInvestigador.getNoDocumento() + ", nombre='" + tbInvestigador.getNombre() + "', "
+                + " primer_apellido='"+tbInvestigador.getPrimerApellido()+"' "
+                + " WHERE id_investigador=" + tbInvestigador.getIdInvestigador());
+        
+        System.out.println("MARCA:"+query);
+        query.executeUpdate();
+        
+        query = em.createNativeQuery("UPDATE public.tb_usuario "
+                + " SET estado='" + tbInvestigador.getIdUsuario().getEstado() + "' "
+                + " WHERE id_usuario=" + tbInvestigador.getIdUsuario().getIdUsuario());
+        
+        System.out.println("MARCA2:"+query);
+        query.executeUpdate();
+    }
+
 }

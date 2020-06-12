@@ -33,9 +33,10 @@ public class TbUsuarioFacade extends AbstractFacade<TbUsuario> implements TbUsua
     
     @Override
     public TbUsuario findByCredenciales(String usuario, String contrasena) {
-        String sql = "SELECT u.id_usuario, u.contrasena, u.estado, u.nombre FROM public.tb_usuario u WHERE u.nombre = \'"+ usuario +"\' AND  u.contrasena = \'"+ contrasena +"\'";
+        String sql = "SELECT u.id_usuario, u.contrasena, u.estado, u.nombre FROM public.tb_usuario u WHERE u.nombre = '"+ usuario +"' AND  u.contrasena = '"+ contrasena +"'";
         Query query = em.createNativeQuery(sql,TbUsuario.class);   
         List<TbUsuario> usuarios = query.getResultList();
+        System.out.println("Query: "+sql);
         if(usuarios.size()>0){
             return usuarios.get(0);
         }else{
