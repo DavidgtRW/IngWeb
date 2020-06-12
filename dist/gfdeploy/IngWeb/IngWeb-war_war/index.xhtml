@@ -8,14 +8,14 @@
         <title>Login Investigador</title>
         <link href="resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
     </h:head>
-    
-    
-     <div id="header">
+
+
+    <div id="header">
         <div id="menu" class="container">
             <ul>
                 <p:button outcome="inicio" value="HOME" style=" border-radius: 5px;  background: transparent;  color: white; border: #4E4D4D; padding: 0px 40px;"/>
                 <p:button outcome="index" value="INVESTIGADOR" style="  border-radius: 5px;  background: transparent; padding: 0px 0px; color: white; border: transparent;" />
-                <p:button value="ADMINISTRADOR" style="  border-radius: 5px; background: transparent; padding: 0px -20px; color: white; border: transparent;"/>
+                <p:button outcome="indexAdmin" value="ADMINISTRADOR" style="  border-radius: 5px; background: transparent; padding: 0px -20px; color: white; border: transparent;"/>
 
             </ul>
         </div>
@@ -33,15 +33,17 @@
                         <h:outputLabel for="username" value="Usuario:" />
                         <p:inputText value="#{usuarioBean.nombreUsuario}" id="username"
                                      required="true" label="username" />
-                        
+
                         <h:outputLabel for="password" value="Clave:" />
                         <p:password value="#{usuarioBean.contrasena}" id="password" required="true"
                                     label="password" />
-                        
+
                         <f:facet name="footer">
-                            <p:commandButton id="loginButton" value="Login"
-                                             action="#{usuarioBean.validateUsernamePassword()}" update=":mensajes" 
-                                             oncomplete="manejarLogin(xhr, status, args)" />
+                            <div align="center">
+                                <p:commandButton id="loginButton" value="Ingresar"
+                                                 action="#{usuarioBean.validateUsernamePassword()}" update=":mensajes" 
+                                                 oncomplete="manejarLogin(xhr, status, args)" />
+                            </div>
                         </f:facet>
 
 
@@ -66,8 +68,8 @@
         }
         //]]>
     </script>
-    
-    
+
+
     <div id="copyright" class="container">
         <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
     </div>
