@@ -27,6 +27,9 @@
                         </p:growl>
 
                         <p:panelMenu style="width:300px">
+                             <p:submenu label="Inicio">
+                                <p:menuitem value="Inicio" outcome="pantallaPrincipalInvestigador" oncomplete="limpiarForm()" icon="pi pi-save" />
+                            </p:submenu>
                             <p:submenu label="Historial academico">
                                 <p:menuitem value="Especialización" outcome="historialAcademico" oncomplete="limpiarForm()" icon="pi pi-save" />
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />

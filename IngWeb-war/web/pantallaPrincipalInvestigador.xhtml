@@ -7,35 +7,83 @@
     <h:head>
         <title>Consola Administracion</title>
         <link href="resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
+        <h:outputStylesheet name="./css/cssLayout.css"/>
     </h:head>
 
-    <br/>
-    <br/>
-    <h:body style="text-align:center">
-        <div id="header">
-            <div id="menu" class="container" align="center">
-                <ul>
-                    <p:megaMenu style="margin-top:20px" styleClass="megaMenu">
-                        <p:submenu label="#{pantallaPrincipalInvestigadorBean.investigador.nombre}" icon="pi pi-check">
-                            <p:column>
-                                <p:submenu label="Control">
-                                    <p:menuitem value="Principal" url="#" />
-                                    <p:menuitem value="Ver informacion personal" url="#" />
-                                </p:submenu>
-                            </p:column>                                   
-                        </p:submenu>
+    <h:body style="text-align:left">
 
-                        <p:menuitem value="Salir" outcome="inicio" icon="pi pi-times" />
-                    </p:megaMenu>
-                </ul>
+
+        <h:form>  
+            <p:growl id="messages"/>
+
+            <p:menubar>
+                <p:submenu label="Formulario" icon="pi pi-file">
+                    <p:menuitem value="Registro Formulario" outcome="formulario" />
+                </p:submenu>
+                <p:submenu label="Historial" icon="pi pi-file">
+                    <p:menuitem value="Historial academico" outcome="historialAcademico"/>
+                    <p:menuitem value="Historial Laboral" outcome="historiallaboraldocente"  />
+                </p:submenu>
+
+                <p:submenu label="Actividades" icon="pi pi-pencil">
+                    <p:menuitem value="Actividades de formacion" outcome="actividadesformacion"  />
+                    <p:menuitem value="Actividades de evaluador" outcome="actividadesevaluador" />
+                </p:submenu>
+
+                <p:submenu label="Producciòn" icon="pi pi-pencil">
+                    <p:menuitem value="Produccion bibliografica" outcome="produccionesbibliograficas" />
+                    <p:menuitem value="Produccion Tecnica o arte" outcome="produccionTA"/>
+                </p:submenu>
+
+                <p:submenu label="Articulos" icon="pi pi-pencil">
+                    <p:menuitem value="Articulos publicados" outcome="articulospublicados"/>
+                </p:submenu>
+
+
+                <p:menuitem value="Cerrar sesion" outcome="inicio" icon="pi pi-times" />
+
+                <f:facet name="options">
+                    <h:outputLabel style="margin:1px 20px 1px 1px;" for="username" value="Investigador: #{pantallaPrincipalInvestigadorBean.investigador.nombre}" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+
+        <div id="page" class="container">
+
+            <div id="content">
+                <div class="title">
+                    <h2>HOLA INVESTIGADOR</h2>
+                </div>
+
+                <p><style type="text/css" >
+                        .ui-analog-clock {
+                            width: 300px;
+                        }
+                    </style>  
+
+
+                    <h:form >
+   
+                        <p:clock  pattern="HH:mm:ss dd.MM.yyyy" mode="server"/>
+                        
+                        <br/>
+                        <br/>
+
+                        <p:clock displayMode="analog" />
+                    </h:form> </p>
             </div>
+            <img src="./imagenes/universidad.jpg" width="600" height="400" />
         </div>
 
 
-        <h:form id="formAdministradores" >
-            <p:commandButton id="loginButton" value="Crear"
-                             actionListener="#{pantallaPrincipalInvestigadorBean.inicializar(actionEvent)}"/>
-        </h:form>
+
+
+
+
+
+
+
 
         <div id="copyright" class="container">
             <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
