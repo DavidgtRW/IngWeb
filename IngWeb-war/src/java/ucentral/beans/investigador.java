@@ -4,22 +4,28 @@
  * and open the template in the editor.
  */
 package ucentral.beans;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionListener;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import ucentral.entities.TbDireccion;
 import ucentral.entities.TbInvestigador;
 import ucentral.entities.TbLibretamilitar;
 import ucentral.entities.TbNacionalidad;
+import ucentral.entities.TbUsuario;
 import ucentral.sessionbean.TbDireccionFacadeLocal;
 import ucentral.sessionbean.TbInvestigadorFacade;
 import ucentral.sessionbean.TbInvestigadorFacadeLocal;
 import ucentral.sessionbean.TbLibretamilitarFacadeLocal;
 import ucentral.sessionbean.TbNacionalidadFacadeLocal;
+import ucentral.utils.Util;
 
 /**
  *
@@ -54,81 +60,134 @@ public class investigador implements Serializable {
     private String genero;
 
     //DATOS DE LA TABLA NACIONALIDAD
-   // private Long id_nacionalidad;
+    private Long id_nacionalidad;
     private String nacionalidad;
 
     //DATOS DE LA TABLA LIBRETA MILITAR
-    //private Long id_libretam; //Resive String
+    private Long id_libretam; //Resive String
     private Long numero;
     private String clase;
     private String distrito;
 
     //DATOS DE LA TABLA DIRECCION
-    //private Long id_direccion;
+    private Long id_direccion;
     private String carrera;
     private String calle;
+    private int idUsuario;
 
     /**
      * Creates a new instance of investigador
      */
     public investigador() {
-        System.out.println("Funciona el registro");
-        //this.id_investigador = "";
+        HttpSession session = Util.getSession();
+        TbInvestigador inv = (TbInvestigador) session.getAttribute("investigador");
+        this.setNombre(inv.getNombre());
+        this.setPrimerapellido(inv.getPrimerApellido());
+        this.setSegundopellido(inv.getSegundoApellido());
+        this.setFechanacimiento(inv.getFechaNacimiento());
+        this.setFechainscripcion(inv.getFechaInscripcion());
+        this.setTipodocumento(inv.getTipoDocumento());
+        this.setNumerodocumento(inv.getNoDocumento());
+        if (inv.getEdad() != null) {
+            this.setEdad(inv.getEdad().toString());
+        }
+        this.setLink(inv.getWeb());
+        this.setCorreo(inv.getCorreo());
+        this.setTelefono(inv.getTelefono());
+        this.setGenero(inv.getGenero());
+        if (inv.getIdNacionalidad() != null) {
+            this.setId_nacionalidad(inv.getIdNacionalidad().getIdNacionalidad());
+            this.setNacionalidad(inv.getIdNacionalidad().getNombrePais());
+        }
+
+        if (inv.getIdLibretamilitar() != null) {
+            this.setId_libretam(inv.getIdLibretamilitar().getIdLibretamilitar());
+            this.setNumero(inv.getIdLibretamilitar().getNumero());
+            this.setClase(inv.getIdLibretamilitar().getClase());
+            this.setDistrito(inv.getIdLibretamilitar().getDistrito());
+        }
+        if (inv.getIdDireccion()!= null) {
+            this.setId_direccion(inv.getIdDireccion().getIdDireccion());
+            this.setCarrera(inv.getIdDireccion().getCarrera());
+            this.setCalle(inv.getIdDireccion().getCalle());
+        }
 
     }
 
     public void crear(ActionListener actionListener) {
         //Objeto Nacionalidad
-        TbNacionalidad N = new TbNacionalidad();
-        Long id_nacionalidad = Long.valueOf(nacionalidadfacade.ultimoRegistro());
-        N.setIdNacionalidad(id_nacionalidad);
-        N.setNombrePais(nacionalidad);
-        
-        System.out.println("NACIONALIDAD");
-        System.out.println(nacionalidad);
-        
-        nacionalidadfacade.create(N);
-        
-         //Objeto Libreta (Check)
-        TbLibretamilitar L = new TbLibretamilitar();
-        
-        Long id_libretam = Long.valueOf(libretafacade.ultimoRegistrolibreta());
-        L.setIdLibretamilitar(id_libretam);
-       
-        System.out.println("id_libreta");
-        System.out.println(id_libretam);
-        
-        L.setNumero(numero);
-        System.out.println("numero libreta");
-        System.out.println(numero);   
-              
-        
-        L.setDistrito(distrito);
-        System.out.println("distrito");
-        System.out.println(distrito);
-        
-        L.setClase(clase);
-        System.out.println("CLASE");
-        System.out.println(clase);
+        try{
+        HttpSession session = Util.getSession();
+        TbInvestigador invAntes = (TbInvestigador) session.getAttribute("investigador");
 
-        libretafacade.create(L);
+        TbNacionalidad N = new TbNacionalidad();
+        if (invAntes.getIdNacionalidad() == null) {
+            
+            Long id_nacionalidad = Long.valueOf(nacionalidadfacade.ultimoRegistro());
+            N.setIdNacionalidad(id_nacionalidad);
+            N.setNombrePais(nacionalidad);
+
+            System.out.println("NACIONALIDAD");
+            System.out.println(nacionalidad);
+
+            nacionalidadfacade.create(N);
+        } else {
+            N = nacionalidadfacade.find(invAntes.getIdNacionalidad().getIdNacionalidad());
+            N.setNombrePais(nacionalidad);
+            nacionalidadfacade.edit(N);
+        }
+
+        //Objeto Libreta (Check)
+        TbLibretamilitar L = new TbLibretamilitar();
+        if (invAntes.getIdLibretamilitar() == null) {
+           
+            Long id_libretam = Long.valueOf(libretafacade.ultimoRegistrolibreta());
+            L.setIdLibretamilitar(id_libretam);
+
+            System.out.println("id_libreta");
+            System.out.println(id_libretam);
+
+            L.setNumero(numero);
+            System.out.println("numero libreta");
+            System.out.println(numero);
+
+            L.setDistrito(distrito);
+            System.out.println("distrito");
+            System.out.println(distrito);
+
+            L.setClase(clase);
+            System.out.println("CLASE");
+            System.out.println(clase);
+
+            libretafacade.create(L);
+        } else {
+            L = libretafacade.find(invAntes.getIdLibretamilitar().getIdLibretamilitar());
+            L.setNumero(numero);
+            L.setDistrito(distrito);
+            L.setClase(clase);
+            libretafacade.edit(L);
+        }
 
         //Objeto Direccion
         TbDireccion D = new TbDireccion();
-        Long id_direccion = Long.valueOf(direccionfacade.ultimoRegistro());
-        D.setIdDireccion(id_direccion);
-        D.setCarrera(carrera);
-        D.setCalle(calle);
-        
-        direccionfacade.create(D);
-        
-        
+        if (invAntes.getIdDireccion() == null) {
+            Long id_direccion = Long.valueOf(direccionfacade.ultimoRegistro());
+            D.setIdDireccion(id_direccion);
+            D.setCarrera(carrera);
+            D.setCalle(calle);
+            direccionfacade.create(D);
+        } else {
+            D = direccionfacade.find(invAntes.getIdDireccion().getIdDireccion());
+            D.setCarrera(carrera);
+            D.setCalle(calle);
+            direccionfacade.edit(D);
+        }
+
         // Objeto investigador
         TbInvestigador I = new TbInvestigador();
-        Long id_investigador = Long.valueOf(investigadorfade.ultimoRegistro());
-        I.setIdInvestigador(id_investigador);
+        I.setIdInvestigador(invAntes.getIdInvestigador());
 
-        I.setNombre(nombre);        
+        I.setNombre(nombre);
         System.out.println("nombre _investigador");
         System.out.println(nombre);
         I.setPrimerApellido(primerapellido);
@@ -146,14 +205,59 @@ public class investigador implements Serializable {
         I.setIdDireccion(D);
         I.setIdLibretamilitar(L);
         I.setIdNacionalidad(N);
-
-        investigadorfade.create(I);
+        TbUsuario usuario = (TbUsuario) session.getAttribute("usuario");
+        I.setIdUsuario(usuario);
+        investigadorfade.edit(I);
+        session.setAttribute("investigador", I);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "El investiagor ha sido actualizado con exito!",
+                    "Investigador Actualizado!"));
         //System.out.println("Funcionaaa! :)");
         //return "investigador";
-
-
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Contacte con soporte!",
+                    "Ocurrio un error inesperado!"));
+        }
     }
 
+ 
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Long getId_nacionalidad() {
+        return id_nacionalidad;
+    }
+
+    public void setId_nacionalidad(Long id_nacionalidad) {
+        this.id_nacionalidad = id_nacionalidad;
+    }
+
+    public Long getId_libretam() {
+        return id_libretam;
+    }
+
+    public void setId_libretam(Long id_libretam) {
+        this.id_libretam = id_libretam;
+    }
+
+    public Long getId_direccion() {
+        return id_direccion;
+    }
+
+    public void setId_direccion(Long id_direccion) {
+        this.id_direccion = id_direccion;
+    }
+
+    
+    
+    
     public TbDireccionFacadeLocal getDireccionfacade() {
         return direccionfacade;
     }
@@ -262,7 +366,6 @@ public class investigador implements Serializable {
         return fechanacimiento;
     }
 
-
     public void setFechanacimiento(Date fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
@@ -333,7 +436,6 @@ public class investigador implements Serializable {
 
     public void setNumero(Long numero) {
         this.numero = numero;
-    } 
-  
+    }
 
 }
