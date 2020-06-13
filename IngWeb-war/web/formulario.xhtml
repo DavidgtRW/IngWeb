@@ -73,13 +73,6 @@
                             <p:panel header="Informacion General" style="width:1000px">
                                 <h:form id="formulario">
 
-                                    <script type="text/javascript">
-                                        function limpiarForm()
-                                        {
-                                            document.getElementById("formulario").reset();
-                                        }
-                                    </script>
-
                                     <h:panelGrid columns="4" cellpadding="10" >
 
                                         <h:outputLabel for="nombre" value="Nombre:" />
@@ -166,9 +159,9 @@
 
 
                                         <f:facet name="footer">
-                                            <p:commandButton id="loginButton" value="Registrar"
+                                            <p:commandButton id="loginButton" value="Actualizar"
                                                              action="#{investigadorBean.crear(actionListener)}" update=":mensajes" 
-                                                             oncomplete="limpiarForm()"/>
+                                                             />
                                         </f:facet>
                                         <br/><br/>
                                     </h:panelGrid>

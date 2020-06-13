@@ -35,8 +35,7 @@ public class PantallaPrincipalInvestigadorBean implements Serializable{
     /**
      * Creates a new instance of PantallaPrincipalInvestigadorBean
      */
-    public PantallaPrincipalInvestigadorBean() {
-    }
+
     
     public void inicializar(ActionEvent actionEvent){
         
@@ -70,6 +69,7 @@ public class PantallaPrincipalInvestigadorBean implements Serializable{
         
         investigador = new TbInvestigador();
         investigador = tbInvestigadorFacadeLocal.findByUsuario(usuario.getIdUsuario());
+        session.setAttribute("investigador", investigador);
         return investigador;
     }
 
