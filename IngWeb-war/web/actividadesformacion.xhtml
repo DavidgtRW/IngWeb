@@ -27,8 +27,11 @@
                         </p:growl>
 
                         <p:panelMenu style="width:300px">
+                            <p:submenu label="Inicio">
+                                <p:menuitem value="Inicio" outcome="pantallaPrincipalInvestigador" oncomplete="limpiarForm()" icon="pi pi-save" />
+                            </p:submenu>
                             <p:submenu label="Formulario">
-                               <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Formulario" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial academico">
@@ -36,7 +39,7 @@
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial Laboral">
-                               <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:separator />
@@ -89,15 +92,15 @@
 
                                         <h:outputLabel for="titulotr" value="Título del trabajo" />
                                         <p:inputText value="#{actividadesformacionbean.titulotrabajo}"  id="titulotr" required="true"
-                                                                     label="titulotr" />
+                                                     label="titulotr" />
 
                                         <h:outputLabel for="nomotroautor" value="Nombre otro autor" />
                                         <p:inputText   value="#{actividadesformacionbean.nombreautor}"  id="nomotroautor" required="true"
-                                                                     label="nomotroautor" />
+                                                       label="nomotroautor" />
 
                                         <h:outputLabel for="apeotroautor" value="Apellido otro autor" />
                                         <p:inputText  value="#{actividadesformacionbean.apellidoautor}" id="apeotroautor" required="true"
-                                                                     label="apeotroautor" />
+                                                      label="apeotroautor" />
 
                                         <p:outputLabel for="fechain" value="Fecha Inicio" />
                                         <p:datePicker id="fechain" value="#{actividadesformacionbean.fechaInicio}"
@@ -108,24 +111,24 @@
                                         <p:outputLabel for="fechafin" value="Fecha Finalizacion" />
                                         <p:datePicker id="fechafin" value="#{actividadesformacionbean.fechaFin}"
                                                       locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
-                                        
+
                                         <h:outputLabel for="arealinea" value="Area Linea Investigacion" />
                                         <p:inputText  value="#{actividadesformacionbean.areainvestigacion}"  id="arealinea" required="true"
-                                                                     label="arealinea" />
-                                        
+                                                      label="arealinea" />
+
                                         <h:outputLabel for="nombrelinea" value="Nombre Linea Investigacion" />
                                         <p:inputText value="#{actividadesformacionbean.nombrelinainvestigacion}"  id="nombrelinea" required="true"
-                                                                     label="nombrelinea" />
-                                        
+                                                     label="nombrelinea" />
+
                                         <h:outputLabel for="descripcionlinea" value="Descripcion Linea Investigacion" />
                                         <p:inputText  value="#{actividadesformacionbean.descripcionlineainvestigacion}"  id="descripcionlinea" required="true"
-                                                                     label="descripcionlinea" />
-                                        
+                                                      label="descripcionlinea" />
+
                                         <p:outputLabel for="@next" value="Puntos" />
                                         <p:selectOneMenu id="puntos" value="#{actividadesformacionbean.puntos}" style="width:200px">
                                             <f:selectItem itemLabel="10" itemValue="10"/>
                                         </p:selectOneMenu>
-                                        
+
 
 
 

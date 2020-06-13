@@ -27,6 +27,9 @@
                         </p:growl>
 
                         <p:panelMenu style="width:300px">
+                            <p:submenu label="Inicio">
+                                <p:menuitem value="Inicio" outcome="pantallaPrincipalInvestigador" oncomplete="limpiarForm()" icon="pi pi-save" />
+                            </p:submenu>
                             <p:submenu label="Formulario">
                                <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Formulario" action="#{menuView.update}"  icon="pi pi-refresh" />
