@@ -27,8 +27,11 @@
                         </p:growl>
 
                         <p:panelMenu style="width:300px">
+                            <p:submenu label="Inicio">
+                                <p:menuitem value="Inicio" outcome="pantallaPrincipalInvestigador" oncomplete="limpiarForm()" icon="pi pi-save" />
+                            </p:submenu>
                             <p:submenu label="Formulario">
-                               <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Formulario" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial academico">
@@ -36,7 +39,7 @@
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial Laboral">
-                               <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:separator />
@@ -85,59 +88,59 @@
                                     </script>
 
                                     <h:panelGrid columns="4" cellpadding="10" >
-                                        
-                                         <p:outputLabel for="@next" value="Tipo de Programa" />
-                                         <p:selectOneMenu id="console" value="#{historialacademicoBe.tipoprograma}" style="width:200px">
+
+                                        <p:outputLabel for="@next" value="Tipo de Programa" />
+                                        <p:selectOneMenu id="console" value="#{historialacademicoBe.tipoprograma}" style="width:200px">
                                             <f:selectItem itemLabel="Pregrado" itemValue="Pregrado"/>
                                             <f:selectItem itemLabel="Especializacion" itemValue="Especializacion"/>
                                             <f:selectItem itemLabel="Doctorado" itemValue="Doctorado"/>
                                             <f:selectItem itemLabel="Maestria" itemValue="Maestria"/>
                                         </p:selectOneMenu>
-                                        
+
                                         <h:outputLabel for="Nombrepre" value="Nombre Programa" />
                                         <p:inputText value="#{historialacademicoBe.nombrepre}" id="Nombrepre" required="true"
                                                      label="Nombrepre" />
-                                        
+
                                         <h:outputLabel for="numerosemestres" value="Numero De Semestres" />
                                         <p:inputText value="#{historialacademicoBe.numerosemestres}" id="numerosemestres" required="true"
                                                      label="numerosemestres" />
-                                        
+
                                         <p:outputLabel for="fechaini" value="Fecha de Inicio" />
                                         <p:datePicker id="fechaini" value="#{historialacademicoBe.fechaInicio}" 
                                                       locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
-                                        
-                                        
+
+
                                         <p:outputLabel for="fechafin" value="Fecha Finalizacion" />
                                         <p:datePicker id="fechafin" value="#{historialacademicoBe.fechaFin}" 
                                                       locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
-                                        
-                                          <h:outputLabel for="promedio" value="Promedio Academico" />
-                                          <p:inputText value="#{historialacademicoBe.promediocademico}" id="promedio" required="true"
+
+                                        <h:outputLabel for="promedio" value="Promedio Academico" />
+                                        <p:inputText value="#{historialacademicoBe.promediocademico}" id="promedio" required="true"
                                                      label="promedio" />
-                                          
-                                          <h:outputLabel for="nombreins" value="Nombre Institucion:" />
-                                          <p:inputText value="#{historialacademicoBe.nombreinstitucion}" id="nombreins" required="true"
+
+                                        <h:outputLabel for="nombreins" value="Nombre Institucion:" />
+                                        <p:inputText value="#{historialacademicoBe.nombreinstitucion}" id="nombreins" required="true"
                                                      label="nombreins" />
-                                          
+
                                         <h:outputLabel for="correoins" value="Correo Institucion:" />
                                         <p:inputText value="#{historialacademicoBe.correoinstitucion}" id="correoins" required="true"
                                                      label="correoins" />
-                                        
+
                                         <h:outputLabel for="telefonoins" value="Telefono Institucion:" />
                                         <p:inputText value="#{historialacademicoBe.telefonoinstitucion}" id="telefonoins" required="true"
                                                      label="telefonoins" />
-                                        
+
                                         <h:outputLabel for="resolucionins" value="Resolucion MSI:" />
                                         <p:inputText value="#{historialacademicoBe.resolucioninstitucion}" id="resolucionins" required="true"
                                                      label="resolucionins" />
-                                        
+
                                         <p:outputLabel for="@next" value="Tipo de institucion:" />
                                         <p:selectOneMenu id="tipoins" value="#{historialacademicoBe.tipoinstitucion}" style="width:200px">
                                             <f:selectItem itemLabel="Publica" itemValue="Publica"/>
                                             <f:selectItem itemLabel="Privada" itemValue="Privada"/>
                                         </p:selectOneMenu>
-                                        
-                                        
+
+
                                         <h:outputLabel for="calle" value="Calle:" />
                                         <p:inputText value="#{historialacademicoBe.calle}" id="calle" required="true"
                                                      label="calle" />
@@ -145,9 +148,9 @@
                                         <h:outputLabel for="carrera" value="Carrera:" />
                                         <p:inputText value="#{historialacademicoBe.carrera}" id="carrera" required="true"
                                                      label="carrera" />                                       
-                                        
 
-   
+
+
 
                                         <f:facet name="footer">
                                             <p:commandButton id="loginButton" value="Registrar"

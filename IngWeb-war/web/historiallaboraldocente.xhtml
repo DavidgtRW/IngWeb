@@ -18,7 +18,7 @@
     <h:body>
 
 
-        
+
         <div>
             <div id="left">
                 <ui:insert name="left">
@@ -30,7 +30,10 @@
 
                         <p:panelMenu style="width:300px">
                             <p:submenu label="Formulario">
-                               <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
+                                <p:submenu label="Inicio">
+                                    <p:menuitem value="Inicio" outcome="pantallaPrincipalInvestigador" oncomplete="limpiarForm()" icon="pi pi-save" />
+                                </p:submenu>
+                                <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Formulario" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial academico">
@@ -38,7 +41,7 @@
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial Laboral">
-                               <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:separator />
@@ -143,7 +146,7 @@
                                             <f:selectItem itemLabel="Mixta" itemValue="Mixta"/>
                                         </p:selectOneMenu>
 
-                                        
+
 
 
 

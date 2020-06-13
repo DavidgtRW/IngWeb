@@ -27,8 +27,11 @@
                         </p:growl>
 
                         <p:panelMenu style="width:300px">
+                            <p:submenu label="Inicio">
+                                <p:menuitem value="Inicio" outcome="pantallaPrincipalInvestigador" oncomplete="limpiarForm()" icon="pi pi-save" />
+                            </p:submenu>
                             <p:submenu label="Formulario">
-                               <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Formulario" outcome="formulario"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion Formulario" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial academico">
@@ -36,7 +39,7 @@
                                 <p:menuitem value="Actualizacion academico" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:submenu label="Historial Laboral">
-                               <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Registro Laboral" outcome="historiallaboraldocente"   ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Actualizacion" action="#{menuView.update}"  icon="pi pi-refresh" />
                             </p:submenu>
                             <p:separator />
@@ -84,28 +87,28 @@
                                     </script>
 
                                     <h:panelGrid columns="4" cellpadding="10" >
-                                        
+
                                         <h:outputLabel for="tituloar" value="Titulo Articuli" />
                                         <p:inputText   value="#{articulospublicadobean.titulo}"  id="tituloar" required="true"
                                                        label="tituloar" />
-                                              
+
 
                                         <h:outputLabel for="nombrepro" value="Nombre produccion bibliografica" />
                                         <p:inputText   value="#{articulospublicadobean.nombrearticulo}"  id="nombrepro" required="true"
                                                        label="nombrepro" />
-                                        
-                                         <h:outputLabel for="resumen" value="Resumen Articuli" />
+
+                                        <h:outputLabel for="resumen" value="Resumen Articuli" />
                                         <p:inputText   value="#{articulospublicadobean.resumen}"  id="resumen" required="true"
                                                        label="resumen" />
-                                        
-                                          <p:outputLabel for="@next" value="Tipo de articulo" />
-                                          <p:selectOneMenu id="tipo" value="#{articulospublicadobean.tipo}" style="width:200px">
+
+                                        <p:outputLabel for="@next" value="Tipo de articulo" />
+                                        <p:selectOneMenu id="tipo" value="#{articulospublicadobean.tipo}" style="width:200px">
                                             <f:selectItem itemLabel="Revision" itemValue="Revision"/>
-                                             <f:selectItem itemLabel="Investigacion" itemValue="Investigacion"/>
+                                            <f:selectItem itemLabel="Investigacion" itemValue="Investigacion"/>
                                         </p:selectOneMenu>
-                                          
-                                           <h:outputLabel for="revistapu" value="Revista de publicacion" />
-                                           <p:inputText   value="#{articulospublicadobean.revista_publ}"  id="revistapu" required="true"
+
+                                        <h:outputLabel for="revistapu" value="Revista de publicacion" />
+                                        <p:inputText   value="#{articulospublicadobean.revista_publ}"  id="revistapu" required="true"
                                                        label="revistapu" />
 
                                         <h:outputLabel for="titulomax" value="Titulo Maximo" />
@@ -119,7 +122,7 @@
                                         <h:outputLabel for="anio" value="Año de publicacion" />
                                         <p:inputText  value="#{articulospublicadobean.aniopublicacion}" id="anio" required="true"
                                                       label="anio" />
-                                        
+
                                         <h:outputLabel for="nopaginas" value="Numero de paginas" />
                                         <p:inputText   value="#{articulospublicadobean.numeropagina}"  id="nopaginas" required="true"
                                                        label="nopaginas" />
