@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Consola Administracion</title>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    </h:head>
+
+    <script type="text/javascript">
+        PrimeFaces.locales['es'] = {
+            closeText: 'Cerrar',
+            prevText: 'Anterior',
+            nextText: 'Siguiente',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+            weekHeader: 'Semana',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Sólo hora',
+            timeText: 'Tiempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            currentText: 'Fecha actual',
+            ampm: false,
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día',
+            allDayText: 'Todo el día'
+        };
+        PrimeFaces.locales ['de'] = {
+            closeText: 'Schließen',
+            prevText: 'Zurück',
+            nextText: 'Weiter',
+            monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+            monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+            dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+            dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+            weekHeader: 'Woche',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Nur Zeit',
+            timeText: 'Zeit',
+            hourText: 'Stunde',
+            minuteText: 'Minute',
+            secondText: 'Sekunde',
+            currentText: 'Aktuelles Datum',
+            ampm: false,
+            month: 'Monat',
+            week: 'Woche',
+            day: 'Tag',
+            allDayText: 'Ganzer Tag'
+        };
+    </script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function dateTemplateFunc(date) {
+            return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+        }
+        //]]>
+    </script>
+
+    <style type="text/css">
+        .value {
+            font-weight: bold;
+        }
+    </style>
+
+    <h:body>
+        <h:form id="form">
+            <div id="header">
+                <div id="menu" class="container" align="center">
+                    <ul>
+                        <p:megaMenu style="margin-top:20px" styleClass="megaMenu">
+                            <p:submenu label="Administrador" icon="pi pi-check">
+                                <p:column>
+                                    <p:submenu label="Control">
+                                        <p:menuitem value="Principal" outcome="pantallaPrincipalAdministrador" />
+                                    </p:submenu>
+                                </p:column>                                   
+                            </p:submenu>
+
+                            <p:submenu label="Investigadores" icon="pi pi-file">
+                                <p:column>
+                                    <p:submenu label="Control">
+                                        <p:menuitem value="Ver Investigadores" outcome="administradorTablaInvestigadores"/>
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+
+                            <p:submenu label="Configuracion" icon="pi pi-pencil">
+
+                                <p:column>
+                                    <p:submenu label="Control">
+                                        <p:menuitem value="Configuracion" outcome="configuracionFecha" />
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+
+                            <p:menuitem value="Salir" outcome="inicio" icon="pi pi-times" />
+                        </p:megaMenu>
+                    </ul>
+                </div>
+            </div>
+            <div align="center">
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel for="button" value="Fecha: " />
+                    <p:datePicker id="button" value="#{calendarView.date7}" showIcon="true" />
+
+                </h:panelGrid>
+
+                <p:commandButton value="Definir Fecha" update="msgs" action="#{calendarView.click}" icon="pi pi-check" />
+            </div>
+
+        </h:form>
+
+        <div id="copyright" class="container">
+            <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
+        </div>
+    </h:body>
+</html>

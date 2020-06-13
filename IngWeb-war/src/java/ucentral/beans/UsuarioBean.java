@@ -20,7 +20,6 @@ import ucentral.sessionbean.TbInvestigadorFacadeLocal;
 import ucentral.sessionbean.TbUsuarioFacadeLocal;
 import ucentral.utils.Util;
 
-
 /**
  *
  * @author david
@@ -31,13 +30,13 @@ public class UsuarioBean implements Serializable {
 
     @EJB
     private TbInvestigadorFacadeLocal tbInvestigadorFacadeLocal;
-    
+
     @EJB
     private TbUsuarioFacadeLocal tbUsuarioFacadeLocal;
-    
+
     private static final String ESTADO_ACTIVO = "ACTIVO";
     private static final String ESTADO_INACTIVO = "INACTIVO";
-    
+
     private List<SelectItem> estados;
     private Long idUsuario;
     private String nombreUsuario;
@@ -64,18 +63,24 @@ public class UsuarioBean implements Serializable {
     public List<TbUsuario> getUsuarios() {
         return tbUsuarioFacadeLocal.findAll();
     }
-    
+
     public String validateUsernamePassword() {
         TbUsuario usuario = tbUsuarioFacadeLocal.findByCredenciales(nombreUsuario, contrasena);
         boolean result = usuario == null;
         System.out.println("validateUsernamePassword");
         if (!result) {
+            if (usuario.getEstado().equals("ACTIVO")) {
+                // get Http Session and store username
+                HttpSession session = Util.getSession();
+                session.setAttribute("usuario", usuario);
 
-            // get Http Session and store username
-            HttpSession session = Util.getSession();
-            session.setAttribute("usuario", usuario);
-            
-            return "investigador";
+                return "investigador";
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                        "Usuario inactivo o incorrecto!",
+                        "Intente de nuevo!"));
+                return "index";
+            }
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Usuario inactivo o incorrecto!",
@@ -86,14 +91,12 @@ public class UsuarioBean implements Serializable {
             System.out.println("validateUsernamePassword");
             return "index";
         }
-        
+
     }
 
     public String registrar() {
         return "Registrar";
     }
-    
-    
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -118,8 +121,6 @@ public class UsuarioBean implements Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
-    
 
     public String getEstado() {
         return estado;

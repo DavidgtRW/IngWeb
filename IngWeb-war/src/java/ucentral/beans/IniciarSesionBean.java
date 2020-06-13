@@ -54,7 +54,7 @@ public class IniciarSesionBean implements Serializable {
                 return "admin";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                        "Usuario inactivo o incorrecto!",
+                        "Usuario administrador incorrecto!",
                         "Intente de nuevo!"));
 
                 // invalidate session, and redirect to other pages

@@ -6,10 +6,13 @@
 package ucentral.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import ucentral.entities.TbInvestigador;
 import ucentral.entities.TbUsuario;
@@ -44,6 +47,7 @@ public class RegistroInvestigadorBean implements Serializable {
     private String correo;
     private String tipoDocuemnto;
     private String numDocumento;
+    private List<SelectItem> estados;
 
     /**
      * Creates a new instance of RegistroInvestigadorBean
@@ -60,6 +64,13 @@ public class RegistroInvestigadorBean implements Serializable {
         correo="";
         tipoDocuemnto="";
         numDocumento="";
+        llenarEstados();
+    }
+    
+    private void llenarEstados() {
+        estados = new ArrayList<>();
+        estados.add(new SelectItem("CEDULA", "CEDULA"));
+        estados.add(new SelectItem("PASAPORTE", "PASAPORTE"));
     }
 
     public String crearUsuarioInvestigador() {
@@ -98,7 +109,7 @@ public class RegistroInvestigadorBean implements Serializable {
     private String generarNombreUsuario() {
 
         String usuarioGenerado = "" + nombre.charAt(0) + "" + primerApellido
-                + "" + idUsuario;
+                + "" + tbInvestigadorFacadeLocal.ultimoRegistro();
 
         return usuarioGenerado;
     }
@@ -205,4 +216,13 @@ public class RegistroInvestigadorBean implements Serializable {
         this.contrasena = contrasena;
     }
 
+    public List<SelectItem> getEstados() {
+        return estados;
+    }
+
+    public void setEstados(List<SelectItem> estados) {
+        this.estados = estados;
+    }
+
+    
 }

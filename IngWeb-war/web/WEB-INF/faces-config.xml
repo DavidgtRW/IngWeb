@@ -65,6 +65,14 @@
             <to-view-id>/confirmarCreacionUsuario.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/configuracionFecha.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>pantallaPrincipalAdministrador</from-outcome>
+            <to-view-id>/pantallaPrincipalAdministrador.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
 
 </faces-config>

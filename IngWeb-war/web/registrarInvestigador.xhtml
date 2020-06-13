@@ -43,8 +43,10 @@
                                      label="correo" />
 
                         <h:outputLabel for="correo2" value="Tipo documento:" />
-                        <p:inputText value="#{registroInvestigadorBean.tipoDocuemnto}" id="correo2" required="true"
-                                     label="tipo doc" />
+                        <p:selectOneMenu id="correo2" value="#{registroInvestigadorBean.tipoDocuemnto}"  style="font-weight: bold"
+                                         required="false" requiredMessage="Seleccione un estado">
+                            <f:selectItems value="#{registroInvestigadorBean.estados}"/>
+                        </p:selectOneMenu>
 
                         <h:outputLabel for="correo3" value="Numero docuemnto:" />
                         <p:inputText value="#{registroInvestigadorBean.numDocumento}" id="correo3" required="true"
@@ -73,7 +75,7 @@
         <br/>
         <br/>
         <br/>
-        
+
         <div id="copyright" class="container">
             <p>INGENIERIA WEB | UNIVERSIDAD CENTRAL | PROYECTO INVESTIGADORES</p>
         </div>

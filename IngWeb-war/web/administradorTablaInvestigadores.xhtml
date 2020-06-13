@@ -18,8 +18,6 @@
                                 <p:column>
                                     <p:submenu label="Control">
                                         <p:menuitem value="Principal" outcome="pantallaPrincipalAdministrador" />
-                                        <p:menuitem value="Ver administradores" url="#" />
-                                        <p:menuitem value="Registrar nuevo Administrador" url="#" />
                                     </p:submenu>
                                 </p:column>                                   
                             </p:submenu>
@@ -36,7 +34,7 @@
 
                                 <p:column>
                                     <p:submenu label="Control">
-                                        <p:menuitem value="Configuracion" url="#" />
+                                        <p:menuitem value="Configuracion" outcome="configuracionFecha"/>
                                     </p:submenu>
                                 </p:column>
                             </p:submenu>
@@ -65,7 +63,7 @@
                             <p:column headerText="Estado">
                                 <h:outputText value="#{investigador.idUsuario.estado}"/>
                             </p:column>
-                            <p:column headerText="Editar">
+                            <p:column headerText="Accion">
                                 <p:commandButton value="Editar" update=":formAdministradores" style="width: 100%"
                                                  actionListener="#{administradorTablaInvestigadoresBean.iniciarModificar(investigador)}">
                                 </p:commandButton>
