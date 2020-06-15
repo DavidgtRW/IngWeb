@@ -30,17 +30,23 @@
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="nombre" value="Nombre:" />
                         <p:inputText value="#{registroInvestigadorBean.nombre}" id="nombre"
-                                     required="true" label="username" />
+                                     required="true" label="username" maxlength="15">
+                            <p:keyFilter regEx="/[a-zA-Z]/i"/> 
+                            
+                        </p:inputText>
 
 
                         <h:outputLabel for="nombre" value="Apellido:" />
                         <p:inputText value="#{registroInvestigadorBean.primerApellido}" id="apellido" 
-                                     required="true" label="apellido" />
+                                     required="true" label="apellido" maxlength="15">
+                            <p:keyFilter regEx="/[a-zA-Z]/i"/> 
+                            
+                        </p:inputText>
 
 
                         <h:outputLabel for="correo" value="Correo:" />
                         <p:inputText value="#{registroInvestigadorBean.correo}" id="correo" required="true"
-                                     label="correo" />
+                                     label="correo" maxlength="25"/>
 
                         <h:outputLabel for="correo2" value="Tipo documento:" />
                         <p:selectOneMenu id="correo2" value="#{registroInvestigadorBean.tipoDocuemnto}"  style="font-weight: bold"
@@ -48,13 +54,17 @@
                             <f:selectItems value="#{registroInvestigadorBean.estados}"/>
                         </p:selectOneMenu>
 
-                        <h:outputLabel for="correo3" value="Numero docuemnto:" />
+                        <h:outputLabel for="correo3" value="Numero documento:" />
                         <p:inputText value="#{registroInvestigadorBean.numDocumento}" id="correo3" required="true"
-                                     label="numero doc" />
+                                     label="numero doc" maxlength="15">
+                            
+                            <p:keyFilter regEx="/[0-9]/i"/> 
+                            
+                        </p:inputText>
 
                         <h:outputLabel for="correo4" value="Contraseña: " />
                         <p:inputText value="#{registroInvestigadorBean.contrasena}" id="correo4" required="true"
-                                     label="contraseña" />
+                                     label="contraseña" maxlength="15"/>
                         <f:facet name="footer">
                             <p:commandButton id="loginButton" value="Crear"
                                              action="#{registroInvestigadorBean.crearUsuarioInvestigador()}"

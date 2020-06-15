@@ -48,6 +48,7 @@ public class RegistroInvestigadorBean implements Serializable {
     private String tipoDocuemnto;
     private String numDocumento;
     private List<SelectItem> estados;
+    private String nombreUsuario;
 
     /**
      * Creates a new instance of RegistroInvestigadorBean
@@ -83,6 +84,7 @@ public class RegistroInvestigadorBean implements Serializable {
             usuarioAux.setNombre(generarNombreUsuario());
             usuarioAux.setEstado("ACTIVO");
             usuarioAux.setContrasena(contrasena);
+            nombreUsuario =  usuarioAux.getNombre();
 
             tbUsuarioFacadeLocal.create(usuarioAux);
 
@@ -97,7 +99,7 @@ public class RegistroInvestigadorBean implements Serializable {
             
             tbInvestigadorFacadeLocal.create(investigadorAux);
             
-            utilFacade.enviarCorreo(correo, generarNombreUsuario(), contrasena, nombre);
+            utilFacade.enviarCorreo(correo, usuarioAux.getNombre(), contrasena, nombre);
 
         } catch (Exception e ) {
             System.out.println("ERROR crearUsuarioInvestigador"+e);
@@ -223,6 +225,16 @@ public class RegistroInvestigadorBean implements Serializable {
     public void setEstados(List<SelectItem> estados) {
         this.estados = estados;
     }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+    
+    
 
     
 }

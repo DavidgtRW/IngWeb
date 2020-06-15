@@ -77,13 +77,25 @@
                     <p:panel rendered="#{administradorTablaInvestigadoresBean.visiblePanelModificar}">
                         <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="20">
                             <h:outputText value="Nombre:"/>
-                            <p:inputText value="#{administradorTablaInvestigadoresBean.nombre}"/>
+                            <p:inputText value="#{administradorTablaInvestigadoresBean.nombre}"
+                                         maxlength="15">
+                                <p:keyFilter regEx="/[a-zA-Z]/i"/> 
+
+                            </p:inputText>
 
                             <h:outputText value="Primer apellido:"/>
-                            <p:inputText value="#{administradorTablaInvestigadoresBean.primerApellido}"/>
+                            <p:inputText value="#{administradorTablaInvestigadoresBean.primerApellido}"
+                                         maxlength="15">
+                                <p:keyFilter regEx="/[a-zA-Z]/i"/> 
+
+                            </p:inputText>
 
                             <h:outputText value="Segundo Apellido:"/>
-                            <p:inputText value="#{administradorTablaInvestigadoresBean.segundoApellido}"/>
+                            <p:inputText value="#{administradorTablaInvestigadoresBean.segundoApellido}"
+                                         maxlength="15">
+                                <p:keyFilter regEx="/[a-zA-Z]/i"/> 
+
+                            </p:inputText>
 
                             <h:outputText value="Correo:"/>
                             <p:inputText value="#{administradorTablaInvestigadoresBean.correo}"/>

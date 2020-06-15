@@ -67,7 +67,7 @@ public class UtilidadesFacade {
                     Message.RecipientType.TO,
                     InternetAddress.parse(correo)
             );
-            message.setSubject("Test de correo");
+            message.setSubject("CREDENCIALES DE ACCESO");
             message.setText("Querido "+nombre+", su usuario: "+usuatrio+" y contraseña:"+contrasena
             + "\n\n Por favor no responder este correo");
 
