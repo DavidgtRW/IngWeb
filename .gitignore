@@ -13,3 +13,4 @@ dist/gfdeploy/IngWeb/IngWeb-war_war/
 dist/gfdeploy/IngWeb/IngWeb-ejb_jar/ucentral/entities/
 
 dist/gfdeploy/IngWeb/IngWeb-ejb_jar/ucentral/sessionbean/
+/IngWeb-ejb/dist/
